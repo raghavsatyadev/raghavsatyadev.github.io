@@ -19,7 +19,8 @@ function insertStylesheet(e) {
         return t(e)
     }
     : t(e)
-})("undefined" != typeof window ? window : this, function(e, t) {
+}
+)("undefined" != typeof window ? window : this, function(e, t) {
     function n(e) {
         var t = e.length
           , n = rt.type(e);
@@ -1839,7 +1840,8 @@ function insertStylesheet(e) {
                             var i = rt.type(n);
                             "function" === i ? e.unique && d.has(n) || l.push(n) : n && n.length && "string" !== i && o(n)
                         })
-                    })(arguments),
+                    }
+                    )(arguments),
                     t ? r = l.length : n && (a = i,
                     u(n))
                 }
@@ -2227,7 +2229,8 @@ function insertStylesheet(e) {
                 nt.deleteExpando = !1
             }
         }
-    })(),
+    }
+    )(),
     function() {
         var t, n, i = ht.createElement("div");
         for (t in {
@@ -2925,7 +2928,8 @@ function insertStylesheet(e) {
             n.removeChild(i),
             e) : void 0
         }
-    })();
+    }
+    )();
     var en, tn, nn = /^margin/, rn = new RegExp("^(" + St + ")(?!px)[a-z%]+$","i"), on = /^(top|right|bottom|left)$/;
     e.getComputedStyle ? (en = function(e) {
         return e.ownerDocument.defaultView.getComputedStyle(e, null)
@@ -4440,9 +4444,9 @@ function(e) {
     }
 }(jQuery),
 /*!
-         * iScroll Lite base on iScroll v4.1.6 ~ Copyright (c) 2011 Matteo Spinelli, http://cubiq.org
-         * Released under MIT license, http://cubiq.org/license
-         */
+ * iScroll Lite base on iScroll v4.1.6 ~ Copyright (c) 2011 Matteo Spinelli, http://cubiq.org
+ * Released under MIT license, http://cubiq.org/license
+ */
 function() {
     var e = Math
       , t = function(e) {
@@ -4876,12 +4880,12 @@ PrivacyPolicy.prototype.readConfFromUrl = function() {
 }
 ,
 PrivacyPolicy.prototype.updateStyles = function() {
-    this.inIframe ? (this.cssString += "#rocky_policy #wbars {height:" + (this.noBrand ? this.wHeight : (this.wHeight || 0) - 81) + "px;}\n",
-    this.cssString += "#rocky_policy .rocky_container > .rocky_footer {  -webkit-box-shadow: none;  -moz-box-shadow: none;  box-shadow: none;  border-top: 1px solid #DDD; }\n",
-    this.cssString += "#rocky_policy.rocky_vip_policy.rocky_fixed_policy .rocky_container {max-width: none; padding-top: 0;}") : (this.cssString += "#rocky_policy .close {display: none;}\n",
-    this.cssString += "#rocky_policy #wbars {   overflow-y: auto;   -webkit-box-shadow: none;   -moz-box-shadow: none;   box-shadow: none;   height: auto; }\n",
-    this.cssString += "#rocky_policy .rocky_container {  margin-top: 30px;  margin-bottom: 30px; }\n",
-    this.cssString += "#rocky_policy .rocky_container > .rocky_footer {  -webkit-box-shadow: none;  -moz-box-shadow: none;  box-shadow: none;  -webkit-border-radius: none;  -moz-border-radius: none;  border-radius: none; }\n"),
+    this.inIframe ? (this.cssString += "#entuze_policy #wbars {height:" + (this.noBrand ? this.wHeight : (this.wHeight || 0) - 81) + "px;}\n",
+    this.cssString += "#entuze_policy .entuzeb_container > .entuzeb_footer {  -webkit-box-shadow: none;  -moz-box-shadow: none;  box-shadow: none;  border-top: 1px solid #DDD; }\n",
+    this.cssString += "#entuze_policy.entuze_vip_policy.entuze_fixed_policy .entuzeb_container {max-width: none; padding-top: 0;}") : (this.cssString += "#entuze_policy .close {display: none;}\n",
+    this.cssString += "#entuze_policy #wbars {   overflow-y: auto;   -webkit-box-shadow: none;   -moz-box-shadow: none;   box-shadow: none;   height: auto; }\n",
+    this.cssString += "#entuze_policy .entuzeb_container {  margin-top: 30px;  margin-bottom: 30px; }\n",
+    this.cssString += "#entuze_policy .entuzeb_container > .entuzeb_footer {  -webkit-box-shadow: none;  -moz-box-shadow: none;  box-shadow: none;  -webkit-border-radius: none;  -moz-border-radius: none;  border-radius: none; }\n"),
     insertStylesheet(this.cssString)
 }
 ,
@@ -4910,7 +4914,7 @@ PrivacyPolicy.prototype.loadedForMobile = function() {
 ,
 PrivacyPolicy.prototype.checkAnchors = function() {
     var e = this;
-    $(".rocky_container").find("a").each(function() {
+    $(".iub_container").find("a").each(function() {
         $(this).hasClass("iframe-preserve") ? e.inIframe && $(this).attr("href", function(t, n) {
             return n.addUrlParameter("ifr", "true").addUrlParameter("height", e.wHeight || null)
         }) : $(this).attr("target") || $(this).attr("target", "_blank")
