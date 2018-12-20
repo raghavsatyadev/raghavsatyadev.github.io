@@ -8,15 +8,15 @@
   },
   {
     "image_link": "https://lh3.googleusercontent.com/YjdujwUeitP6xr5KVj8wBMgEIdHk_hMRztzFKISiWEJsnCfqbqw4u83l1e5PZ9MfxiI=w720-h310-rw",
-    "description": "",
-  "title": "Second Slide",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+  	"title": "",
     "text_color": "#FFFFFF",
     "bg_color": "#4CAF50"
   },
   {
     "image_link": "https://lh3.googleusercontent.com/e9P4W-uQW8kdMw6yMX6NSHiy9KL7gvMPUugh4r2lOSYECTFuvZhl_rqKAlma43qA4uM8=s180-rw",
     "description": "Third Slide Description",
-   "title": "Third Slide",
+   	"title": "Third Slide",
     "text_color": "#FFFFFF",
     "bg_color": "#00BCD4"
   }
