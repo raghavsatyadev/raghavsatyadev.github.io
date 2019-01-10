@@ -9,6 +9,7 @@
     "min_version": 5,
     "current_version": 6,
     "redirect_details": {
+      "enable": true,
       "hard_redirect": false,
       "dialog_message": "Redirect Notice",
       "positive_button": "Redirect",
@@ -38,7 +39,8 @@
     "min_version": 5,
     "current_version": 6,
     "redirect_details": {
-      "hard_redirect": false,
+      "enable": true,
+      "hard_redirect": true,
       "dialog_message": "Redirect Notice",
       "positive_button": "Redirect",
       "negative_button": "Cancel",
