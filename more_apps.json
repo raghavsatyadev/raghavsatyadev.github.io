@@ -73,7 +73,7 @@
     "min_version": 2,
     "current_version": 5,
     "redirect_details": {
-      "enable": false,
+      "enable": true,
       "hard_redirect": false,
       "dialog_title": "Redirect Notice",
       "dialog_message": "We have uploaded our app to new location",
