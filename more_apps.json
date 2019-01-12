@@ -74,7 +74,7 @@
     "current_version": 5,
     "redirect_details": {
       "enable": true,
-      "hard_redirect": false,
+      "hard_redirect": true,
       "dialog_title": "Redirect Notice",
       "dialog_message": "We have uploaded our app to new location",
       "positive_button": "Redirect",
