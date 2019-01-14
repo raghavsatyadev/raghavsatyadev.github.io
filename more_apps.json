@@ -17,6 +17,13 @@
     "package_name": "com.appdroidtechno.tools.tictoc",
     "description": "Every tool/feature you need to manage TikTok (formally Known as Musically) app.",
     "min_version": 5,
-    "current_version": 6
+    "current_version": 6,
+    "soft_update_details": {
+      "enable": true,
+      "dialog_title": "New update available",
+      "dialog_message": "We have added some new features in the new update, please check it out.",
+      "positive_button": "Update",
+      "negative_button": "Cancel"
+    }
   }
 ]
