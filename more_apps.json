@@ -24,6 +24,12 @@
       "dialog_message": "We have added some new features in the new update, please check it out.",
       "positive_button": "Update",
       "negative_button": "Cancel"
+    },
+    "hard_update_details": {
+      "enable": true,
+      "dialog_title": "Update Required!",
+      "dialog_message": "This version is outdated. To continue to use this app please update it.",
+      "positive_button": "Update"
     }
   }
 ]
