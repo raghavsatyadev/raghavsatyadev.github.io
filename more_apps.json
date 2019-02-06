@@ -31,5 +31,28 @@
       "dialog_message": "This version is outdated. To continue to use this app please update it.",
       "positive_button": "Update"
     }
+  },
+  {
+    "image_link": "https://lh3.googleusercontent.com/7Pm5sXdv0SMnHdhJ1pbcdJnDyZvb9yp9sdTnGTCeJj6Jj1lWaix8qCERgda8u7vg17Q=s180-rw",
+    "name": "Video DP Creator for Facebook",
+    "rating": 5,
+    "app_link": "https://play.google.com/store/apps/details?id=com.appdroidtechno.videodpcreator",
+    "package_name": "com.appdroidtechno.videodpcreator",
+    "description": "Want to make your Social Profile more attractive? Try this app to make Video DP.",
+    "min_version": 1,
+    "current_version": 1,
+    "soft_update_details": {
+      "enable": true,
+      "dialog_title": "New update available",
+      "dialog_message": "We have added some new features in the new update, please check it out.",
+      "positive_button": "Update",
+      "negative_button": "Cancel"
+    },
+    "hard_update_details": {
+      "enable": true,
+      "dialog_title": "Update Required!",
+      "dialog_message": "This version is outdated. To continue to use this app please update it.",
+      "positive_button": "Update"
+    }
   }
 ]
