@@ -7,7 +7,8 @@
     "package_name": "com.appdroidtechnologies.whatscut",
     "description": "Easily cut and share large videos on WhatsApp.",
     "min_version": 5,
-    "current_version": 6
+    "current_version": 6,
+    "show_in_dialog": true
   },
   {
     "image_link": "https://lh3.googleusercontent.com/EpDjP8egmkfhnGHoo4kII_-GInJRUE11kBg8iWAzvz5NNa_1p0VALeQbh307wFalZaDl=s180-rw",
@@ -17,7 +18,8 @@
     "package_name": "com.appdroidtechno.tools.tictoc",
     "description": "Every tool/feature you need to manage TikTok (formally Known as Musically) app.",
     "min_version": 5,
-    "current_version": 6
+    "current_version": 6,
+    "show_in_dialog": true
   },
   {
     "image_link": "https://lh3.googleusercontent.com/EpDjP8egmkfhnGHoo4kII_-GInJRUE11kBg8iWAzvz5NNa_1p0VALeQbh307wFalZaDl=s180-rw",
@@ -28,6 +30,7 @@
     "description": "Every tool/feature you need to manage TikTok (formally Known as Musically) app.",
     "min_version": 2,
     "current_version": 5,
+    "show_in_dialog": true,
     "redirect_details": {
       "enable": true,
       "hard_redirect": false,
