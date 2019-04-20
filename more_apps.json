@@ -6,9 +6,9 @@
     "app_link": "https://play.google.com/store/apps/details?id=com.appdroidtechnologies.whatscut",
     "package_name": "com.appdroidtechnologies.whatscut",
     "description": "Easily cut and share large videos on WhatsApp.",
-    "min_version": 5,
+    "min_version": 4,
     "show_in_dialog": true,
-    "current_version": 6,
+    "current_version": 4,
     "soft_update_details": {
       "enable": true,
       "dialog_title": "New update available",
