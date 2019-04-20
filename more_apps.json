@@ -7,6 +7,7 @@
     "package_name": "com.appdroidtechnologies.whatscut",
     "description": "Easily cut and share large videos on WhatsApp.",
     "min_version": 5,
+    "show_in_dialog": true,
     "current_version": 6,
     "soft_update_details": {
       "enable": true,
@@ -30,6 +31,7 @@
     "package_name": "com.appdroidtechno.tools.tictoc",
     "description": "Every tool/feature you need to manage TikTok (formally Known as Musically) app.",
     "min_version": 5,
+    "show_in_dialog": true,
     "current_version": 6,
     "soft_update_details": {
       "enable": true,
@@ -53,6 +55,7 @@
     "package_name": "com.appdroidtechno.videodpcreator",
     "description": "Want to make your Social Profile more attractive? Try this app to make Video DP.",
     "min_version": 1,
+    "show_in_dialog": true,
     "current_version": 1,
     "soft_update_details": {
       "enable": true,
