@@ -1,5 +1,29 @@
 [
   {
+    "image_link": "https://lh3.googleusercontent.com/KTnLIFAw4s4II9_a2FfIfHgKTEX_P4V3JaSHaK4CDuqsqIPxdXxN3VzAh6_0XvczBjGk=s180-rw",
+    "name": "WhatsDirect - Send message without saving number",
+    "rating": 5,
+    "app_link": "https://play.google.com/store/apps/details?id=com.app.whatsdirect",
+    "package_name": "com.app.whatsdirect",
+    "description": "Send message to whatsapp number without saving it",
+    "min_version": 1,
+    "show_in_dialog": true,
+    "current_version": 1,
+    "soft_update_details": {
+      "enable": true,
+      "dialog_title": "New update available",
+      "dialog_message": "We have added some new features in the new update, please check it out.",
+      "positive_button": "Update",
+      "negative_button": "Cancel"
+    },
+    "hard_update_details": {
+      "enable": true,
+      "dialog_title": "Update Required!",
+      "dialog_message": "This version is outdated. To continue to use this app please update it.",
+      "positive_button": "Update"
+    }
+  },
+  {
     "image_link": "https://lh3.googleusercontent.com/e9P4W-uQW8kdMw6yMX6NSHiy9KL7gvMPUugh4r2lOSYECTFuvZhl_rqKAlma43qA4uM8=s180-rw",
     "name": "WhatsCut - Best Video Cut & Share App for WhatsApp",
     "rating": 4.2,
