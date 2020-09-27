@@ -22,7 +22,7 @@
     "show_in_dialog": true
   },
   {
-    "image_link": "https://lh3.googleusercontent.com/DdARfdna5YRaFap_QS11lC4a63hZ4MyaE2knX7b4hP4Wo-GThQVzlwGgwwj7yOpII6-T=s180-rw",
+    "image_link": "https://lh3.googleusercontent.com/DdGcPVh9kkUSbi2pP7CGRif83mbjwWkdmcCnXtMFsXVST-GThQVzlwGgwwj7yOpII6-T=s180-rw",
     "name": "More Apps",
     "rating": 5,
     "app_link": "https://play.google.com/store/apps/details?id=com.rocky.moreapps.example",
@@ -43,6 +43,7 @@
     "soft_update_details": {
       "enable": true,
       "dialog_show_count": 3,
+      "notification_show_count": 3,
       "dialog_title": "Update Required!",
       "dialog_message": "Soft Update is required",
       "positive_button": "Update",
