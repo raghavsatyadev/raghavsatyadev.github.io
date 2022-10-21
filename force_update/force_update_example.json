@@ -12,7 +12,7 @@
     "country_code": "IN",
     "description":
         "Showcase your other apps in a beautiful way. This library also includes force updater.",
-    "min_version_android": 16,
+    "min_version_android": 14,
     "current_version_android": 18,
     "min_version_ios": 16,
     "current_version_ios": 18,
