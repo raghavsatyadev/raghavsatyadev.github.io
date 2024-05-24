@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Account Request</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("h0nM53phcyCHcMkCU"); // Replace with your EmailJS user ID
+        })();
+    </script>
 </head>
 <body>
     <h2>Request to Delete Account from Sundaram Gold App</h2>
@@ -28,9 +34,18 @@
             const email = document.getElementById('email').value;
             const reason = document.getElementById('reason').value;
 
-            const mailtoLink = `mailto:raghavsatyadev@gmail.com?subject=Account Deletion Request from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AReason: ${encodeURIComponent(reason)}`;
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: reason
+            };
 
-            window.location.href = mailtoLink;
+            emailjs.send('service_nkut9ls', 'template_qoazfyo', templateParams)
+                .then(function(response) {
+                    alert('Email sent successfully!');
+                }, function(error) {
+                    alert('Failed to send email. Please try again later.');
+                });
         });
     </script>
 </body>
