@@ -4,111 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Account Request</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-        }
-        .logo {
-            max-width: 100px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #6D5E0F;
-            text-align: center;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label {
-            margin-bottom: 5px;
-            color: #333;
-            align-self: flex-start;
-        }
-        input, textarea {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 100%;
-        }
-        input[type="submit"] {
-            background-color: #6D5E0F;
-            border: none;
-            color: #fff;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-        input[type="submit"]:hover {
-            background-color: #e0d073;
-        }
-    </style>
-    <script>
-        (function() {
-            emailjs.init("h0nM53phcyCHcMkCU"); // Replace with your EmailJS user ID
-        })();
-    </script>
 </head>
-<body>
-    <div class="container">
-        <img src="logo.webp" alt="Logo" class="logo">
-        <h2>Request to Delete Account from Sundaram Gold App</h2>
+<body class="mdc-typography">
+<div class="mdc-card">
+    <div class="mdc-card__primary-action">
+        <div class="mdc-card__media mdc-card__media--square">
+            <img src="logo.webp" alt="Logo" class="mdc-image-list__image">
+        </div>
+        <h2 class="mdc-typography--headline6">Request to Delete Account from Sundaram Gold App</h2>
         <form id="deleteAccountForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <div class="mdc-text-field">
+                <input type="text" id="name" class="mdc-text-field__input" required>
+                <label class="mdc-floating-label" for="name">Name:</label>
+                <div class="mdc-line-ripple"></div>
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <div class="mdc-text-field">
+                <input type="email" id="email" class="mdc-text-field__input" required>
+                <label class="mdc-floating-label" for="email">Email:</label>
+                <div class="mdc-line-ripple"></div>
+            </div>
 
-            <label for="reason">Reason for Deleting Account:</label>
-            <textarea id="reason" name="reason" rows="4" cols="50" required></textarea>
+            <div class="mdc-text-field mdc-text-field--textarea">
+                <textarea id="reason" class="mdc-text-field__input" rows="4" cols="50" required></textarea>
+                <label class="mdc-floating-label" for="reason">Reason for Deleting Account:</label>
+            </div>
 
-            <input type="submit" value="Submit">
+            <button class="mdc-button mdc-button--raised" type="submit">
+                <span class="mdc-button__label">Submit</span>
+            </button>
         </form>
     </div>
+</div>
 
-    <script>
-        document.getElementById('deleteAccountForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
+<script>
+    mdc.autoInit();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const reason = document.getElementById('reason').value;
+    document.getElementById('deleteAccountForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
 
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                message: reason
-            };
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const reason = document.getElementById('reason').value;
 
-            emailjs.send('service_nkut9ls', 'template_qoazfyo', templateParams)
-                .then(function(response) {
-                    alert('Email sent successfully!');
-                }, function(error) {
-                    alert('Failed to send email. Please try again later.');
-                });
-        });
-    </script>
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            message: reason
+        };
+
+        emailjs.send('service_nkut9ls', 'template_qoazfyo', templateParams)
+            .then(function(response) {
+                alert('Email sent successfully!');
+            }, function(error) {
+                alert('Failed to send email. Please try again later.');
+            });
+    });
+</script>
 </body>
 </html>
