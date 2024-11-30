@@ -1,0 +1,8 @@
+SELECT
+  "companyName",
+  "externalUrl",
+  "description"
+FROM
+  jobs
+WHERE
+  status = 'applied';

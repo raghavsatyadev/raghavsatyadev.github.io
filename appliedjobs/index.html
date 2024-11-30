@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Jobs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .date-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .date-list li {
+            margin: 5px 0;
+        }
+        .date-list a {
+            text-decoration: none;
+            color: blue;
+        }
+        .job-entry {
+            margin-bottom: 20px;
+        }
+        .job-entry h3 {
+            margin: 0;
+        }
+        .job-entry p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Applied Jobs</h1>
+<ul id="dateList" class="date-list"></ul>
+<div id="jobDetails"></div>
+<script>
+    // Directory containing the JSON files
+    const jsonDirectory = 'appliedjobs/jsons/';
+
+    // Function to fetch and list available JSON files
+    async function listJsonFiles() {
+        try {
+            const response = await fetch(jsonDirectory);
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const links = Array.from(doc.querySelectorAll('a'))
+                .map(link => link.href)
+                .filter(href => href.endsWith('.json'));
+
+            const dateList = document.getElementById('dateList');
+            links.forEach(link => {
+                const date = link.split('/').pop().replace('.json', '');
+                const listItem = document.createElement('li');
+                const anchor = document.createElement('a');
+                anchor.href = '#';
+                anchor.textContent = date;
+                anchor.addEventListener('click', () => loadJsonData(date));
+                listItem.appendChild(anchor);
+                dateList.appendChild(listItem);
+            });
+        } catch (error) {
+            console.error('Error listing JSON files:', error);
+        }
+    }
+
+    // Function to load and display job data from a selected JSON file
+    async function loadJsonData(date) {
+        try {
+            const response = await fetch(`${jsonDirectory}${date}.json`);
+            const jobs = await response.json();
+            const jobDetails = document.getElementById('jobDetails');
+            jobDetails.innerHTML = ''; // Clear previous details
+
+            jobs.forEach(job => {
+                const jobEntry = document.createElement('div');
+                jobEntry.className = 'job-entry';
+
+                const titleLink = document.createElement('a');
+                titleLink.href = job.externalUrl;
+                titleLink.target = '_blank';
+                const titleHeading = document.createElement('h3');
+                titleHeading.textContent = job.companyName;
+                titleLink.appendChild(titleHeading);
+                jobEntry.appendChild(titleLink);
+
+                const descriptionPara = document.createElement('p');
+                descriptionPara.textContent = job.description;
+                jobEntry.appendChild(descriptionPara);
+
+                jobDetails.appendChild(jobEntry);
+            });
+        } catch (error) {
+            console.error('Error loading JSON data:', error);
+        }
+    }
+
+    // Initialize the page by listing available JSON files
+    listJsonFiles();
+</script>
+</body>
+</html>
