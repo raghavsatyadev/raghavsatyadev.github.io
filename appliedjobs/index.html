@@ -3,51 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applied Jobs</title>
+    <title>Date Selection</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-
-        .date-list {
-            list-style-type: none;
-            padding: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-
-        .date-list li {
-            margin: 5px 0;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
-
-        .date-list a {
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
             text-decoration: none;
             color: blue;
         }
-
-        .job-entry {
-            margin-bottom: 20px;
-        }
-
-        .job-entry h3 {
-            margin: 0;
-        }
-
-        .job-entry p {
-            margin: 5px 0;
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-<h1>Applied Jobs</h1>
-<ul id="dateList" class="date-list"></ul>
-<div id="jobDetails"></div>
+<h1>Select a Date</h1>
+<table id="dateTable">
+    <thead>
+    <tr>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Dates will be populated here -->
+    </tbody>
+</table>
 <script>
-    // Directory containing the JSON files
-    const jsonDirectory = '../appliedjobs/jsons/';
+    const jsonDirectory = 'appliedjobs/jsons/';
+    const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/' + jsonDirectory;
 
     async function listJsonFiles() {
-        const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/jsons';
-
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
@@ -66,55 +66,23 @@
                 return dateB - dateA;
             });
 
-            const dateList = document.getElementById('dateList');
+            const dateTableBody = document.querySelector('#dateTable tbody');
             jsonFiles.forEach(fileName => {
                 const date = fileName.replace('.json', '');
-                const listItem = document.createElement('li');
-                const anchor = document.createElement('a');
-                anchor.href = '#';
-                anchor.textContent = date;
-                anchor.addEventListener('click', () => loadJsonData(date));
-                listItem.appendChild(anchor);
-                dateList.appendChild(listItem);
+                const row = document.createElement('tr');
+                const cell = document.createElement('td');
+                const link = document.createElement('a');
+                link.href = `jobs.html?date=${date}`;
+                link.textContent = date;
+                cell.appendChild(link);
+                row.appendChild(cell);
+                dateTableBody.appendChild(row);
             });
         } catch (error) {
             console.error('Error fetching JSON files:', error);
         }
     }
 
-
-    // Function to load and display job data from a selected JSON file
-    async function loadJsonData(date) {
-        try {
-            const response = await fetch(`${jsonDirectory}${date}.json`);
-            const jobs = await response.json();
-            const jobDetails = document.getElementById('jobDetails');
-            jobDetails.innerHTML = ''; // Clear previous details
-
-            jobs.forEach(job => {
-                const jobEntry = document.createElement('div');
-                jobEntry.className = 'job-entry';
-
-                const titleLink = document.createElement('a');
-                titleLink.href = job.externalUrl;
-                titleLink.target = '_blank';
-                const titleHeading = document.createElement('h3');
-                titleHeading.textContent = job.companyName;
-                titleLink.appendChild(titleHeading);
-                jobEntry.appendChild(titleLink);
-
-                const descriptionPara = document.createElement('p');
-                descriptionPara.textContent = job.description;
-                jobEntry.appendChild(descriptionPara);
-
-                jobDetails.appendChild(jobEntry);
-            });
-        } catch (error) {
-            console.error('Error loading JSON data:', error);
-        }
-    }
-
-    // Initialize the page by listing available JSON files
     listJsonFiles();
 </script>
 </body>
