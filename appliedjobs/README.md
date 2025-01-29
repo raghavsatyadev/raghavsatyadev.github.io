@@ -23,7 +23,7 @@ The project consists of two main HTML files:
 - **GitHub API:** Fetching JSON files containing job data.
 
 ## Setup and Usage
-
+Users can access the site directly at [Applied Jobs Web Application](https://raghavsatyadev.github.io/appliedjobs/).
 1. **Clone the Repository:**
 
    ```bash
