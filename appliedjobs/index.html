@@ -43,31 +43,32 @@
 <div id="jobDetails"></div>
 <script>
     // Directory containing the JSON files
-    const jsonDirectory = 'jsons/';
+    const jsonDirectory = '../appliedjobs/jsons/';
 
-    // Function to fetch and list available JSON files
     async function listJsonFiles() {
-        try {
-            const response = await fetch(jsonDirectory);
-            const text = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const links = Array.from(doc.querySelectorAll('a'))
-                .map(link => link.href)
-                .filter(href => href.endsWith('.json'))
-                .map(href => href.split('/').pop().replace('.json', ''));
+        const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/jsons';
 
-            links.sort((a, b) => {
-                const [dayA, monthA, yearA] = a.split('-').map(Number);
-                const [dayB, monthB, yearB] = b.split('-').map(Number);
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            // Filter for JSON files and extract their names
+            const jsonFiles = data
+                .filter(item => item.type === 'file' && item.name.endsWith('.json'))
+                .map(item => item.name);
+
+            // Sort files in descending order based on date in filename
+            jsonFiles.sort((a, b) => {
+                const [dayA, monthA, yearA] = a.replace('.json', '').split('-').map(Number);
+                const [dayB, monthB, yearB] = b.replace('.json', '').split('-').map(Number);
                 const dateA = new Date(yearA, monthA - 1, dayA);
                 const dateB = new Date(yearB, monthB - 1, dayB);
                 return dateB - dateA;
             });
 
             const dateList = document.getElementById('dateList');
-            links.forEach(link => {
-                const date = link.split('/').pop().replace('.json', '');
+            jsonFiles.forEach(fileName => {
+                const date = fileName.replace('.json', '');
                 const listItem = document.createElement('li');
                 const anchor = document.createElement('a');
                 anchor.href = '#';
@@ -77,9 +78,10 @@
                 dateList.appendChild(listItem);
             });
         } catch (error) {
-            console.error('Error listing JSON files:', error);
+            console.error('Error fetching JSON files:', error);
         }
     }
+
 
     // Function to load and display job data from a selected JSON file
     async function loadJsonData(date) {
