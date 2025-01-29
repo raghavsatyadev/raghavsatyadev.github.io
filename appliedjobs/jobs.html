@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details</title>
@@ -151,7 +153,7 @@
             const descriptionCell = document.createElement('td');
             const descriptionDiv = document.createElement('div');
             descriptionDiv.className = 'description';
-            descriptionDiv.textContent = job.description;
+            descriptionDiv.innerHTML = DOMPurify.sanitize(marked.parse(job.description));
             descriptionCell.appendChild(descriptionDiv);
             const showMore = document.createElement('span');
             showMore.className = 'show-more';
