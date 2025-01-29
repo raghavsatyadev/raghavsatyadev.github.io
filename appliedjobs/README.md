@@ -1,19 +1,23 @@
 # Applied Jobs Web Application
 
-This web application allows users to view and manage job applications by selecting dates and viewing corresponding job details.
+This web application allows users to view and manage job applications by selecting dates and viewing corresponding job
+details.
 
 ## Features
 
 - **Date Selection:** Users can select a date to view job applications submitted on that day.
-- **Job Details Display:** For each selected date, the application displays job details including the company name, a brief description, and an "Apply" button.
+- **Job Details Display:** For each selected date, the application displays job details including the company name, a
+  brief description, and an "Apply" button.
 - **Responsive Design:** The application is designed to be user-friendly and responsive across various devices.
 
 ## Project Structure
 
 The project consists of two main HTML files:
 
-1. **index.html:** Displays a list of available dates in a tabular format. Users can select a date to view job applications.
-2. **jobs.html:** Displays job details for the selected date, including company name, description, and an "Apply" button.
+1. **index.html:** Displays a list of available dates in a tabular format. Users can select a date to view job
+   applications.
+2. **jobs.html:** Displays job details for the selected date, including company name, description, and an "Apply"
+   button.
 
 ## Technologies Used
 
@@ -23,7 +27,9 @@ The project consists of two main HTML files:
 - **GitHub API:** Fetching JSON files containing job data.
 
 ## Setup and Usage
+
 Users can access the site directly at [Applied Jobs Web Application](https://raghavsatyadev.github.io/appliedjobs/).
+
 1. **Clone the Repository:**
 
    ```bash
@@ -46,8 +52,8 @@ Users can access the site directly at [Applied Jobs Web Application](https://rag
 
 3. **Accessing the Application:**
 
-   - Open `index.html` in a web browser to start the application.
-   - Select a date to view the corresponding job applications.
+    - Open `index.html` in a web browser to start the application.
+    - Select a date to view the corresponding job applications.
 
 ## JSON File Format
 
@@ -55,16 +61,16 @@ Each JSON file in the `appliedjobs/jsons/` directory should follow this structur
 
 ```json
 [
-    {
-        "companyName": "Example Company",
-        "externalUrl": "https://example.com/job-application",
-        "description": "Job description here."
-    },
-    {
-        "companyName": "Another Company",
-        "externalUrl": "https://another.com/job-application",
-        "description": "Another job description here."
-    }
+  {
+    "companyName": "Example Company",
+    "externalUrl": "https://example.com/job-application",
+    "description": "Job description here."
+  },
+  {
+    "companyName": "Another Company",
+    "externalUrl": "https://another.com/job-application",
+    "description": "Another job description here."
+  }
 ]
 ```
 
@@ -78,6 +84,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- [Best-README-Template](https://github.com/othneildrew/Best-README-Template) for inspiration on structuring this README.
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template) for inspiration on structuring this
+  README.
 - [Make a README](https://www.makeareadme.com/) for guidelines on creating effective README files.
 

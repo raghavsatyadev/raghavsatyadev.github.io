@@ -4,13 +4,14 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Job Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .back-button {
             background-color: #007bff;
             color: white;
@@ -22,38 +23,46 @@
             text-decoration: none;
             display: inline-block;
         }
+
         .back-button:hover {
             background-color: #0056b3;
         }
+
         .selected-date {
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         .description {
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
+
         .show-more {
             color: blue;
             cursor: pointer;
             text-decoration: underline;
         }
+
         /* Apply Button Styling */
         .apply-button {
             background-color: #28a745;
@@ -69,14 +78,17 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             cursor: pointer;
         }
+
         .apply-button:hover {
             background-color: #218838;
             transform: translateY(-2px);
         }
+
         .apply-button:active {
             background-color: #1e7e34;
             transform: translateY(1px);
         }
+
         /* Company Name Styling */
         .company-link {
             font-size: 1.2em;
@@ -84,10 +96,12 @@
             color: #333;
             text-decoration: none;
         }
+
         .company-link:hover {
             color: #007bff;
             text-decoration: underline;
         }
+
         /* Set width for the first column */
         th:first-child,
         td:first-child {
@@ -96,7 +110,7 @@
     </style>
 </head>
 <body>
-<a href="index.html" class="back-button">Back to Date Selection</a>
+<a class="back-button" href="index.html">Back to Date Selection</a>
 <div id="jobDetails"></div>
 <script>
     // Function to get URL parameters
