@@ -1,9 +1,7 @@
 SELECT
   "companyName",
   "externalUrl",
-  "description",
-  "status",
-  "labels"
+  "description"
 FROM
   jobs
 WHERE
