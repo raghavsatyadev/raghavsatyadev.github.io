@@ -57,27 +57,48 @@
             const response = await fetch(apiUrl);
             const data = await response.json();
 
-            // Filter for JSON files and extract their names
-            const jsonFiles = data
-                .filter(item => item.type === 'file' && item.name.endsWith('.json'))
-                .map(item => item.name);
+            const jsonFiles = [];
 
-            // Sort files in descending order based on date in filename
+            // Extract folder structure (YYYY/Month/file.json)
+            for (const yearFolder of data) {
+                if (yearFolder.type === 'dir' && /^\d{4}$/.test(yearFolder.name)) { // Match YYYY format
+                    const yearContentsResponse = await fetch(apiUrl + yearFolder.name);
+                    const yearContents = await yearContentsResponse.json();
+
+                    for (const monthFolder of yearContents) {
+                        if (monthFolder.type === 'dir') {
+                            const monthContentsResponse = await fetch(apiUrl + yearFolder.name + '/' + monthFolder.name);
+                            const monthContents = await monthContentsResponse.json();
+
+                            monthContents.forEach(file => {
+                                if (file.type === 'file' && file.name.endsWith('.json')) {
+                                    jsonFiles.push({
+                                        name: file.name,
+                                        path: `${yearFolder.name}/${monthFolder.name}/${file.name}`
+                                    });
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Sort files in descending order based on date
             jsonFiles.sort((a, b) => {
-                const [dayA, monthA, yearA] = a.replace('.json', '').split('-').map(Number);
-                const [dayB, monthB, yearB] = b.replace('.json', '').split('-').map(Number);
+                const [dayA, monthA, yearA] = a.name.replace('.json', '').split('-').map(Number);
+                const [dayB, monthB, yearB] = b.name.replace('.json', '').split('-').map(Number);
                 const dateA = new Date(yearA, monthA - 1, dayA);
                 const dateB = new Date(yearB, monthB - 1, dayB);
                 return dateB - dateA;
             });
 
             const dateTableBody = document.querySelector('#dateTable tbody');
-            jsonFiles.forEach(fileName => {
-                const date = fileName.replace('.json', '');
+            jsonFiles.forEach(file => {
+                const date = file.name.replace('.json', '');
                 const row = document.createElement('tr');
                 const cell = document.createElement('td');
                 const link = document.createElement('a');
-                link.href = `jobs.html?date=${date}`;
+                link.href = `jobs.html?date=${date}&path=${file.path}`;
                 link.textContent = date;
                 cell.appendChild(link);
                 row.appendChild(cell);

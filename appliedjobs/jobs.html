@@ -89,7 +89,6 @@
             transform: translateY(1px);
         }
 
-        /* Company Name Styling */
         .company-link {
             font-size: 1.2em;
             font-weight: bold;
@@ -102,9 +101,7 @@
             text-decoration: underline;
         }
 
-        /* Set width for the first column */
-        th:first-child,
-        td:first-child {
+        th:first-child, td:first-child {
             width: 300px;
         }
     </style>
@@ -113,16 +110,14 @@
 <a class="back-button" href="index.html">Back to Date Selection</a>
 <div id="jobDetails"></div>
 <script>
-    // Function to get URL parameters
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
 
-    // Function to load job data for the selected date
-    async function loadJobData(date) {
+    async function loadJobData(date, path) {
         const jsonDirectory = 'jsons/';
-        const response = await fetch(`${jsonDirectory}${date}.json`);
+        const response = await fetch(`${jsonDirectory}${path}`);
         if (!response.ok) {
             document.getElementById('jobDetails').innerHTML = '<p>No job data found for the selected date.</p>';
             return;
@@ -131,13 +126,11 @@
         const jobDetails = document.getElementById('jobDetails');
         jobDetails.innerHTML = '';
 
-        // Display selected date
         const selectedDate = document.createElement('div');
         selectedDate.className = 'selected-date';
         selectedDate.textContent = `Jobs Applied on ${date}`;
         jobDetails.appendChild(selectedDate);
 
-        // Create table for job details
         const table = document.createElement('table');
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
@@ -152,48 +145,13 @@
         const tbody = document.createElement('tbody');
         jobs.forEach(job => {
             const row = document.createElement('tr');
-
-            // Company Name Cell
             const companyCell = document.createElement('td');
             const companyLink = document.createElement('a');
             companyLink.href = job.externalUrl;
             companyLink.target = '_blank';
             companyLink.textContent = job.companyName;
-            companyLink.className = 'company-link';
             companyCell.appendChild(companyLink);
             row.appendChild(companyCell);
-
-            // Description Cell
-            const descriptionCell = document.createElement('td');
-            const descriptionDiv = document.createElement('div');
-            descriptionDiv.className = 'description';
-            descriptionDiv.innerHTML = DOMPurify.sanitize(marked.parse(job.description));
-            descriptionCell.appendChild(descriptionDiv);
-            const showMore = document.createElement('span');
-            showMore.className = 'show-more';
-            showMore.textContent = 'Show More';
-            showMore.addEventListener('click', () => {
-                if (descriptionDiv.classList.contains('description')) {
-                    descriptionDiv.classList.remove('description');
-                    showMore.textContent = 'Show Less';
-                } else {
-                    descriptionDiv.classList.add('description');
-                    showMore.textContent = 'Show More';
-                }
-            });
-            descriptionCell.appendChild(showMore);
-            row.appendChild(descriptionCell);
-
-            // Apply Button Cell
-            const applyCell = document.createElement('td');
-            const applyButton = document.createElement('button');
-            applyButton.textContent = 'Apply';
-            applyButton.className = 'apply-button';
-            applyButton.addEventListener('click', () => {
-                window.open(job.externalUrl, '_blank');
-            });
-            applyCell.appendChild(applyButton);
-            row.appendChild(applyCell);
 
             tbody.appendChild(row);
         });
@@ -201,12 +159,10 @@
         jobDetails.appendChild(table);
     }
 
-    // Get the selected date from URL parameters and load job data
     const selectedDate = getQueryParam('date');
-    if (selectedDate) {
-        loadJobData(selectedDate);
-    } else {
-        document.getElementById('jobDetails').innerHTML = '<p>No date selected.</p>';
+    const filePath = getQueryParam('path');
+    if (selectedDate && filePath) {
+        loadJobData(selectedDate, filePath);
     }
 </script>
 </body>
