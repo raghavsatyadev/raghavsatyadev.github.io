@@ -1,115 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Date Selection</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Applied Jobs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            text-align: center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            width: 120px;
+        }
+
+        .icon {
+            font-size: 60px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             margin-bottom: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        a {
             text-decoration: none;
-            color: blue;
+            display: inline-block;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .back-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-<h1>Select a Date</h1>
-<table id="dateTable">
-    <thead>
-    <tr>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Dates will be populated here -->
-    </tbody>
-</table>
+
+<h1>Applied Jobs</h1>
+<!-- We'll show/hide this depending on the view -->
+<button id="backBtn" class="back-button hidden">🔙 Back</button>
+<div id="jsonTree" class="container"></div>
+
 <script>
-    const jsonDirectory = 'appliedjobs/jsons/';
-    const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/' + jsonDirectory;
+    // Base GitHub API
+    const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/jsons/';
+    const token = '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'; // Replace with your actual token
+    const CACHE_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-    async function listJsonFiles() {
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            const jsonFiles = [];
-
-            // Extract folder structure (YYYY/Month/file.json)
-            for (const yearFolder of data) {
-                if (yearFolder.type === 'dir' && /^\d{4}$/.test(yearFolder.name)) { // Match YYYY format
-                    const yearContentsResponse = await fetch(apiUrl + yearFolder.name);
-                    const yearContents = await yearContentsResponse.json();
-
-                    for (const monthFolder of yearContents) {
-                        if (monthFolder.type === 'dir') {
-                            const monthContentsResponse = await fetch(apiUrl + yearFolder.name + '/' + monthFolder.name);
-                            const monthContents = await monthContentsResponse.json();
-
-                            monthContents.forEach(file => {
-                                if (file.type === 'file' && file.name.endsWith('.json')) {
-                                    jsonFiles.push({
-                                        name: file.name,
-                                        path: `${yearFolder.name}/${monthFolder.name}/${file.name}`
-                                    });
-                                }
-                            });
-                        }
-                    }
-                }
-            }
-
-            // Sort files in descending order based on date
-            jsonFiles.sort((a, b) => {
-                const [dayA, monthA, yearA] = a.name.replace('.json', '').split('-').map(Number);
-                const [dayB, monthB, yearB] = b.name.replace('.json', '').split('-').map(Number);
-                const dateA = new Date(yearA, monthA - 1, dayA);
-                const dateB = new Date(yearB, monthB - 1, dayB);
-                return dateB - dateA;
-            });
-
-            const dateTableBody = document.querySelector('#dateTable tbody');
-            jsonFiles.forEach(file => {
-                const date = file.name.replace('.json', '');
-                const row = document.createElement('tr');
-                const cell = document.createElement('td');
-                const link = document.createElement('a');
-                link.href = `jobs.html?date=${date}&path=${file.path}`;
-                link.textContent = date;
-                cell.appendChild(link);
-                row.appendChild(cell);
-                dateTableBody.appendChild(row);
-            });
-        } catch (error) {
-            console.error('Error fetching JSON files:', error);
-        }
+    // Page Load: Decide if we need the back button
+    function maybeShowBackButton() {
+        const params = new URLSearchParams(window.location.search);
+        const view = params.get('view');
+        // If view is not set or is 'year', we are at the top-level (hide button).
+        // Otherwise, show button for 'month' or 'file'.
+        const hideBackButton = (!view || view === 'year');
+        console.log(`hide Bck Button ${hideBackButton}`);
+        document.getElementById('backBtn').className = hideBackButton ? "hidden" : "back-button";
     }
 
-    listJsonFiles();
+    // Our custom back button just calls the system history back
+    document.getElementById('backBtn').addEventListener('click', () => history.back());
+
+    // -------------------- Data Fetch with 7-Day Caching --------------------
+    async function fetchData(url) {
+        console.log('Fetching:', url);
+        const cacheKey = `cached_${url}`;
+        // 1) Check localStorage
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+            const cachedObj = JSON.parse(cached);
+            if (Date.now() < cachedObj.expiry) {
+                console.log('Returning cached data for:', url);
+                return cachedObj.data;
+            } else {
+                localStorage.removeItem(cacheKey);
+            }
+        }
+        // 2) If no valid cache, fetch from GitHub
+        const response = await fetch(url, {
+            headers: {'Authorization': `token ${token}`}
+        });
+        if (!response.ok) {
+            console.error(`Failed to fetch data from ${url}:`, response.statusText);
+            return [];
+        }
+        const data = await response.json();
+        // 3) Store in cache for 7 days
+        const expiry = Date.now() + CACHE_DURATION_MS;
+        localStorage.setItem(cacheKey, JSON.stringify({data, expiry}));
+        return data;
+    }
+
+    // -------------------- Load Year Folders (Default View) --------------------
+    async function loadYearFolders() {
+        console.log('Loading Year Folders...');
+        const years = await fetchData(apiUrl);
+        renderItems(years, 'year');
+    }
+
+    // -------------------- Load Month Folders for a Specific Year --------------------
+    async function loadMonthFolders(year) {
+        console.log('Loading Month Folders for:', year);
+        const url = `${apiUrl}${year}`;
+        const months = await fetchData(url);
+        renderItems(months, 'month', year);
+    }
+
+    // -------------------- Load JSON Files for a Specific Month --------------------
+    async function loadJsonFiles(year, month) {
+        console.log('Loading JSON Files for:', year, month);
+        const url = `${apiUrl}${year}/${month}`;
+        const files = await fetchData(url);
+        renderItems(files, 'file', year, month);
+    }
+
+    // -------------------- Render Items (Year, Month, File) --------------------
+    function renderItems(items, view, year = '', month = '') {
+        // Clear UI
+        const container = document.getElementById('jsonTree');
+        container.innerHTML = '';
+
+        // Show or hide our custom back button as needed
+        maybeShowBackButton();
+
+        items.forEach(item => {
+            // Year
+            if (view === 'year' && item.type === 'dir') {
+                createItem(item.name, '📁', () => {
+                    // Navigate to month view in URL
+                    window.location.href = `index.html?view=month&year=${item.name}`;
+                });
+            }
+            // Month
+            else if (view === 'month' && item.type === 'dir') {
+                createItem(item.name, '📁', () => {
+                    // Navigate to file view in URL
+                    window.location.href = `index.html?view=file&year=${year}&month=${item.name}`;
+                });
+            }
+            // File
+            else if (view === 'file' && item.type === 'file' && item.name.endsWith('.json')) {
+                createItem(item.name, '📄', () => {
+                    // Go to jobs.html with no "appliedjobs/jsons" in param
+                    window.location.href = `jobs.html?file=${item.name}&year=${year}&month=${month}`;
+                });
+            }
+        });
+    }
+
+    // -------------------- Helper: Create Clickable Item --------------------
+    function createItem(name, icon, onClick) {
+        const div = document.createElement('div');
+        div.classList.add('item');
+        div.innerHTML = `<div class="icon">${icon}</div><span>${name}</span>`;
+        div.addEventListener('click', onClick);
+        document.getElementById('jsonTree').appendChild(div);
+    }
+
+    // -------------------- Page Init --------------------
+    document.addEventListener('DOMContentLoaded', async () => {
+        const params = new URLSearchParams(window.location.search);
+        const view = params.get('view');
+        const year = params.get('year');
+        const month = params.get('month');
+
+        if (view === 'month' && year) {
+            await loadMonthFolders(year);
+        } else if (view === 'file' && year && month) {
+            await loadJsonFiles(year, month);
+        } else {
+            // Default => Show Year Folders
+            await loadYearFolders();
+        }
+    });
 </script>
 </body>
 </html>

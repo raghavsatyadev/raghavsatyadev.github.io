@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Use Marked.js and DOMPurify for safe Markdown rendering -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Job Details</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Applied Jobs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-
         .back-button {
             background-color: #007bff;
             color: white;
@@ -23,46 +23,40 @@
             text-decoration: none;
             display: inline-block;
         }
-
         .back-button:hover {
             background-color: #0056b3;
         }
-
         .selected-date {
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 20px;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
+            vertical-align: top;
         }
-
         th {
             background-color: #f2f2f2;
         }
-
         .description {
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
-
         .show-more {
             color: blue;
             cursor: pointer;
             text-decoration: underline;
+            margin-left: 5px;
         }
-
         /* Apply Button Styling */
         .apply-button {
             background-color: #28a745;
@@ -78,92 +72,177 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             cursor: pointer;
         }
-
         .apply-button:hover {
             background-color: #218838;
             transform: translateY(-2px);
         }
-
         .apply-button:active {
             background-color: #1e7e34;
             transform: translateY(1px);
         }
-
         .company-link {
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
             text-decoration: none;
         }
-
         .company-link:hover {
             color: #007bff;
             text-decoration: underline;
         }
-
         th:first-child, td:first-child {
             width: 300px;
         }
     </style>
 </head>
 <body>
-<a class="back-button" href="index.html">Back to Date Selection</a>
+
+<!-- Instead of going back to the year list, we use "history.back()"
+     so it returns to the exact file list from which we came. -->
+<button id="backBtn" class="back-button">🔙 Back</button>
+
 <div id="jobDetails"></div>
+
 <script>
+    // 7-day cache in localStorage
+    const CACHE_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
+
+    // Custom back button => same as system back
+    document.getElementById('backBtn').addEventListener('click', () => history.back());
+
+    // Query param helper
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
 
-    async function loadJobData(date, path) {
-        const jsonDirectory = 'jsons/';
-        const response = await fetch(`${jsonDirectory}${path}`);
-        if (!response.ok) {
-            document.getElementById('jobDetails').innerHTML = '<p>No job data found for the selected date.</p>';
-            return;
+    // Reconstruct local path => "jsons/2023/January/10-01-2023.json"
+    function getFullJsonPath(fileName, year, month) {
+        return `jsons/${year}/${month}/${fileName}`;
+    }
+
+    async function fetchDataWithCache(path) {
+        const cacheKey = `cached_jobs_${path}`;
+        // 1) localStorage check
+        const cachedItem = localStorage.getItem(cacheKey);
+        if (cachedItem) {
+            const parsed = JSON.parse(cachedItem);
+            if (Date.now() < parsed.expiry) {
+                console.log(`Loading job data from cache for: ${path}`);
+                return parsed.data;
+            } else {
+                localStorage.removeItem(cacheKey);
+            }
         }
-        const jobs = await response.json();
+        // 2) fetch from local path
+        console.log(`Fetching job data: ${path}`);
+        const response = await fetch(path);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch job data from: ${path}`);
+        }
+        const data = await response.json();
+        // 3) store 7 days
+        const expiry = Date.now() + CACHE_DURATION_MS;
+        localStorage.setItem(cacheKey, JSON.stringify({ data, expiry }));
+        return data;
+    }
+
+    async function loadJobData(fileName, year, month) {
         const jobDetails = document.getElementById('jobDetails');
         jobDetails.innerHTML = '';
 
-        const selectedDate = document.createElement('div');
-        selectedDate.className = 'selected-date';
-        selectedDate.textContent = `Jobs Applied on ${date}`;
-        jobDetails.appendChild(selectedDate);
+        if (!fileName || !year || !month) {
+            jobDetails.innerHTML = '<p>Error: Missing required parameters.</p>';
+            return;
+        }
 
-        const table = document.createElement('table');
-        const thead = document.createElement('thead');
-        const headerRow = document.createElement('tr');
-        ['Company Name', 'Description', 'Apply'].forEach(text => {
-            const th = document.createElement('th');
-            th.textContent = text;
-            headerRow.appendChild(th);
-        });
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
+        const path = getFullJsonPath(fileName, year, month);
 
-        const tbody = document.createElement('tbody');
-        jobs.forEach(job => {
-            const row = document.createElement('tr');
-            const companyCell = document.createElement('td');
-            const companyLink = document.createElement('a');
-            companyLink.href = job.externalUrl;
-            companyLink.target = '_blank';
-            companyLink.textContent = job.companyName;
-            companyCell.appendChild(companyLink);
-            row.appendChild(companyCell);
+        try {
+            const jobs = await fetchDataWithCache(path);
 
-            tbody.appendChild(row);
-        });
-        table.appendChild(tbody);
-        jobDetails.appendChild(table);
+            // Title
+            const selectedDate = document.createElement('div');
+            selectedDate.className = 'selected-date';
+            selectedDate.textContent = `Jobs Applied on ${fileName.replace('.json','')}`;
+            jobDetails.appendChild(selectedDate);
+
+            // Build the table
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            ['Company Name', 'Description', 'Apply'].forEach(text => {
+                const th = document.createElement('th');
+                th.textContent = text;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            const tbody = document.createElement('tbody');
+            jobs.forEach(job => {
+                const row = document.createElement('tr');
+
+                // Company
+                const companyCell = document.createElement('td');
+                const companyLink = document.createElement('a');
+                companyLink.href = job.externalUrl;
+                companyLink.target = '_blank';
+                companyLink.classList.add('company-link');
+                companyLink.textContent = job.companyName;
+                companyCell.appendChild(companyLink);
+                row.appendChild(companyCell);
+
+                // Description
+                const descriptionCell = document.createElement('td');
+                const descriptionDiv = document.createElement('div');
+                descriptionDiv.className = 'description';
+                descriptionDiv.innerHTML = DOMPurify.sanitize(marked.parse(job.description || ''));
+                descriptionCell.appendChild(descriptionDiv);
+
+                // Show More
+                const showMore = document.createElement('span');
+                showMore.className = 'show-more';
+                showMore.textContent = 'Show More';
+                showMore.addEventListener('click', () => {
+                    if (descriptionDiv.classList.contains('description')) {
+                        descriptionDiv.classList.remove('description');
+                        showMore.textContent = 'Show Less';
+                    } else {
+                        descriptionDiv.classList.add('description');
+                        showMore.textContent = 'Show More';
+                    }
+                });
+                descriptionCell.appendChild(showMore);
+                row.appendChild(descriptionCell);
+
+                // Apply
+                const applyCell = document.createElement('td');
+                const applyButton = document.createElement('button');
+                applyButton.textContent = 'Apply';
+                applyButton.className = 'apply-button';
+                applyButton.addEventListener('click', () => {
+                    window.open(job.externalUrl, '_blank');
+                });
+                applyCell.appendChild(applyButton);
+                row.appendChild(applyCell);
+
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+            jobDetails.appendChild(table);
+
+        } catch (error) {
+            console.error(error);
+            jobDetails.innerHTML = '<p>No job data found or unable to load the file.</p>';
+        }
     }
 
-    const selectedDate = getQueryParam('date');
-    const filePath = getQueryParam('path');
-    if (selectedDate && filePath) {
-        loadJobData(selectedDate, filePath);
-    }
+    // Main
+    const fileName = getQueryParam('file');
+    const year = getQueryParam('year');
+    const month = getQueryParam('month');
+    loadJobData(fileName, year, month);
 </script>
 </body>
 </html>
