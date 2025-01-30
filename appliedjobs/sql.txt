@@ -1,8 +1,31 @@
 SELECT
   "companyName",
   "externalUrl",
-  "description"
+  "description",
+  "status",
+  "labels"
 FROM
   jobs
 WHERE
-  status = 'applied';
+  status = 'applied'
+
+
+SELECT
+  "companyName",
+  "externalUrl",
+  "description",
+  "status",
+  "labels"
+FROM
+  jobs
+WHERE
+  status = 'deleted'
+  AND 'Submitted' = ANY("labels");
+
+
+
+
+UPDATE jobs
+SET "status" = 'downloaded'
+WHERE "status" = 'deleted'
+  AND 'Submitted' = ANY("labels");  
