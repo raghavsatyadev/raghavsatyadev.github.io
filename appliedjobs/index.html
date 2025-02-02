@@ -56,13 +56,13 @@
 
 <h1>Applied Jobs</h1>
 <!-- We'll show/hide this depending on the view -->
-<button id="backBtn" class="back-button hidden">🔙 Back</button>
+<button id="backBtn" class="back-button hidden">Back</button>
 <div id="jsonTree" class="container"></div>
 
 <script>
     // Base GitHub API
     const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/jsons/';
-    const CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 1 days
+    const CACHE_DURATION_MS = 20 * 60 * 60 * 1000; // 20 Hours
 
     // Page Load: Decide if we need the back button
     function maybeShowBackButton() {
@@ -71,7 +71,6 @@
         // If view is not set or is 'year', we are at the top-level (hide button).
         // Otherwise, show button for 'month' or 'file'.
         const hideBackButton = (!view || view === 'year');
-        console.log(`hide Bck Button ${hideBackButton}`);
         document.getElementById('backBtn').className = hideBackButton ? "hidden" : "back-button";
     }
 
@@ -80,8 +79,7 @@
 
     // -------------------- Data Fetch with 7-Day Caching --------------------
     async function fetchData(url) {
-        console.log('Fetching:', url);
-        const cacheKey = `cached_${url}`;
+        const cacheKey = `cache_${url}`;
         // 1) Check localStorage
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
