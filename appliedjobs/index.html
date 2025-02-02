@@ -108,14 +108,20 @@
     async function loadYearFolders() {
         console.log('Loading Year Folders...');
         const years = await fetchData(apiUrl);
+        years.sort((a, b) => b.name.localeCompare(a.name)); 
         renderItems(years, 'year');
     }
-
+    const monthOrder = {
+        "January": 1, "February": 2, "March": 3, "April": 4,
+        "May": 5, "June": 6, "July": 7, "August": 8,
+        "September": 9, "October": 10, "November": 11, "December": 12
+    };
     // -------------------- Load Month Folders for a Specific Year --------------------
     async function loadMonthFolders(year) {
         console.log('Loading Month Folders for:', year);
         const url = `${apiUrl}${year}`;
         const months = await fetchData(url);
+        months.sort((a, b) => monthOrder[b.name] - monthOrder[a.name]);
         renderItems(months, 'month', year);
     }
 
@@ -124,6 +130,11 @@
         console.log('Loading JSON Files for:', year, month);
         const url = `${apiUrl}${year}/${month}`;
         const files = await fetchData(url);
+        files.sort((a, b) => {
+            const dateA = new Date(a.name.split('.json')[0].split('-').reverse().join('-')); // Convert to YYYY-MM-DD
+            const dateB = new Date(b.name.split('.json')[0].split('-').reverse().join('-'));
+            return dateB - dateA; // Sort latest first
+        });
         renderItems(files, 'file', year, month);
     }
 
