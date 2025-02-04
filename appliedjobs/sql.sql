@@ -4,8 +4,7 @@ SELECT
   "description"
 FROM
   jobs
-WHERE
-  status = 'applied'
+WHERE status = 'applied';
 
 
 UPDATE jobs

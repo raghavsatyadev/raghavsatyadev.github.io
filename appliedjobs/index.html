@@ -61,7 +61,7 @@
 
 <script>
     // Base GitHub API
-    const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/jsons/';
+    const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/';
     const CACHE_DURATION_MS = 20 * 60 * 60 * 1000; // 20 Hours
 
     // Page Load: Decide if we need the back button
@@ -125,7 +125,14 @@
     // -------------------- Load Year Folders (Default View) --------------------
     async function loadYearFolders() {
         console.log('Loading Year Folders...');
-        const years = await fetchData(apiUrl);
+        let job_view = getQueryParam('job_view');
+        if (!job_view) {
+            job_view = 'applied';
+        }
+
+        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
+
+        const years = await fetchData(`${apiUrl}`);
         years.sort((a, b) => b.name.localeCompare(a.name)); 
         renderItems(years, 'year');
     }
@@ -137,6 +144,13 @@
     // -------------------- Load Month Folders for a Specific Year --------------------
     async function loadMonthFolders(year) {
         console.log('Loading Month Folders for:', year);
+        let job_view = getQueryParam('job_view');
+        if (!job_view) {
+            job_view = 'applied';
+        }
+
+        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
+
         const url = `${apiUrl}${year}`;
         const months = await fetchData(url);
         months.sort((a, b) => monthOrder[b.name] - monthOrder[a.name]);
@@ -146,6 +160,13 @@
     // -------------------- Load JSON Files for a Specific Month --------------------
     async function loadJsonFiles(year, month) {
         console.log('Loading JSON Files for:', year, month);
+        let job_view = getQueryParam('job_view');
+        if (!job_view) {
+            job_view = 'applied';
+        }
+
+        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
+
         const url = `${apiUrl}${year}/${month}`;
         const files = await fetchData(url);
         files.sort((a, b) => {

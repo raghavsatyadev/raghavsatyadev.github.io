@@ -12,6 +12,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .back-button {
             background-color: #007bff;
             color: white;
@@ -23,40 +24,48 @@
             text-decoration: none;
             display: inline-block;
         }
+
         .back-button:hover {
             background-color: #0056b3;
         }
+
         .selected-date {
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
             vertical-align: top;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         .description {
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
+
         .show-more {
             color: blue;
             cursor: pointer;
             text-decoration: underline;
             margin-left: 5px;
         }
+
         /* Apply Button Styling */
         .apply-button {
             background-color: #28a745;
@@ -72,24 +81,29 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             cursor: pointer;
         }
+
         .apply-button:hover {
             background-color: #218838;
             transform: translateY(-2px);
         }
+
         .apply-button:active {
             background-color: #1e7e34;
             transform: translateY(1px);
         }
+
         .company-link {
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
             text-decoration: none;
         }
+
         .company-link:hover {
             color: #007bff;
             text-decoration: underline;
         }
+
         th:first-child, td:first-child {
             width: 300px;
         }
@@ -117,8 +131,12 @@
     }
 
     // Reconstruct local path => "jsons/2023/January/10-01-2023.json"
-    function getFullJsonPath(fileName, year, month) {
-        return `jsons/${year}/${month}/${fileName}`;
+    function getFullJsonPath(job_view, fileName, year, month) {
+        let s = `applied`;
+        if (job_view === 'new') {
+            s = `new`;
+        }
+        return `${s}/${year}/${month}/${fileName}`;
     }
 
     async function fetchDataWithCache(path) {
@@ -143,20 +161,20 @@
         const data = await response.json();
         // 3) store 7 days
         const expiry = Date.now() + CACHE_DURATION_MS;
-        localStorage.setItem(cacheKey, JSON.stringify({ data, expiry }));
+        localStorage.setItem(cacheKey, JSON.stringify({data, expiry}));
         return data;
     }
 
-    async function loadJobData(fileName, year, month) {
+    async function loadJobData(job_view, fileName, year, month) {
         const jobDetails = document.getElementById('jobDetails');
         jobDetails.innerHTML = '';
 
-        if (!fileName || !year || !month) {
+        if (!job_view || !fileName || !year || !month) {
             jobDetails.innerHTML = '<p>Error: Missing required parameters.</p>';
             return;
         }
 
-        const path = getFullJsonPath(fileName, year, month);
+        const path = getFullJsonPath(job_view, fileName, year, month);
 
         try {
             const jobs = await fetchDataWithCache(path);
@@ -164,7 +182,7 @@
             // Title
             const selectedDate = document.createElement('div');
             selectedDate.className = 'selected-date';
-            selectedDate.textContent = `Jobs Applied on ${fileName.replace('.json','')}`;
+            selectedDate.textContent = `Jobs Applied on ${fileName.replace('.json', '')}`;
             jobDetails.appendChild(selectedDate);
 
             // Build the table
@@ -239,10 +257,11 @@
     }
 
     // Main
+    const job_view = getQueryParam('job_view');
     const fileName = getQueryParam('file');
     const year = getQueryParam('year');
     const month = getQueryParam('month');
-    loadJobData(fileName, year, month);
+    loadJobData(job_view, fileName, year, month);
 </script>
 </body>
 </html>
