@@ -191,8 +191,11 @@
 
             // Title
             const selectedDate = document.createElement('div');
-            selectedDate.className = 'selected-date';
-            selectedDate.textContent = `Jobs Applied on ${fileName.replace('.json', '')}`;
+            let textContent = `Jobs Applied on `;
+            if (job_view === 'new') {
+                textContent = `New Jobs Found on `;
+            }
+            selectedDate.textContent = `${textContent}${fileName.replace('.json', '')}`;
             jobDetails.appendChild(selectedDate);
 
             // Build the table
@@ -225,18 +228,21 @@
                 const descriptionCell = document.createElement('td');
 
                 // Created Date
-                const createdDateDiv = document.createElement('div');
-                createdDateDiv.className = 'created-date';
-                const options = {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: true
-                };
-                createdDateDiv.textContent = `Created at: ${new Date(job.created_at).toLocaleString('en-GB', options)}`;
-                descriptionCell.appendChild(createdDateDiv);
+                let createdAt = job.created_at;
+                if (createdAt) {
+                    const createdDateDiv = document.createElement('div');
+                    createdDateDiv.className = 'created-date';
+                    const options = {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    };
+                    createdDateDiv.textContent = `Created at: ${new Date(createdAt).toLocaleString('en-GB', options)}`;
+                    descriptionCell.appendChild(createdDateDiv);
+                }
 
                 const descriptionDiv = document.createElement('div');
                 descriptionDiv.className = 'description';
