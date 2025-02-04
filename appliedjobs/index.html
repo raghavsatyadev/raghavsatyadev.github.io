@@ -3,12 +3,32 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Applied Jobs</title>
+    <title>Jobs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            background-color: #f2f2f2;
+        }
+
+        .tab.active {
+            background-color: white;
+            border-top: 2px solid #007bff;
+            font-weight: bold;
         }
 
         .container {
@@ -54,51 +74,60 @@
 </head>
 <body>
 
-<h1>Android Native Developer Jobs 4-10 YOE</h1>
-<!-- We'll show/hide this depending on the view -->
+<h1>Jobs</h1>
+
+<div class="tabs">
+    <div class="tab active" id="appliedTab">Applied Jobs</div>
+    <div class="tab" id="newTab">New Jobs</div>
+</div>
+
 <button id="backBtn" class="back-button hidden">Back</button>
 <div id="jsonTree" class="container"></div>
 
 <script>
     // Base GitHub API
-    const apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/';
+    let apiUrl = 'https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/';
     const CACHE_DURATION_MS = 20 * 60 * 60 * 1000; // 20 Hours
+
+    // Query param helper
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
 
     // Page Load: Decide if we need the back button
     function maybeShowBackButton() {
-        const params = new URLSearchParams(window.location.search);
-        const view = params.get('view');
-        const year = params.get('year');
-        const month = params.get('month');
-        // If view is not set or is 'year', we are at the top-level (hide button).
-        // Otherwise, show button for 'month' or 'file'.
+        const job_view = getQueryParam('job_view');
+        const view = getQueryParam('view');
+        const year = getQueryParam('year');
+        const month = getQueryParam('month');
         const hideBackButton = (!view || view === 'year');
         let backButton = document.getElementById('backBtn');
         backButton.className = hideBackButton ? "hidden" : "back-button";
 
+        backButton.dataset.job_view = job_view;
         backButton.dataset.view = view;
         backButton.dataset.year = year;
         backButton.dataset.month = month;
     }
 
-    // Our custom back button just calls the system history back
+    // Custom back button just calls the system history back
     document.getElementById('backBtn').addEventListener('click', () => {
         const backBtn = document.getElementById('backBtn');
+        const job_view = backBtn.dataset.job_view;
         const view = backBtn.dataset.view;
         const year = backBtn.dataset.year;
-        const month = backBtn.dataset.month;
 
         if (view === 'file') {
-            window.location.href = `index.html?view=month&year=${year}`;
+            window.location.href = `index.html?job_view=${job_view}&view=month&year=${year}`;
         } else if (view === 'month') {
-            window.location.href = `index.html?view=year`;
+            window.location.href = `index.html?job_view=${job_view}&view=year`;
         }
     });
 
-    // -------------------- Data Fetch with 7-Day Caching --------------------
+    // Data Fetch with 7-Day Caching
     async function fetchData(url) {
         const cacheKey = `cache_${url}`;
-        // 1) Check localStorage
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
             const cachedObj = JSON.parse(cached);
@@ -109,109 +138,90 @@
                 localStorage.removeItem(cacheKey);
             }
         }
-        // 2) If no valid cache, fetch from GitHub
-        const response = await fetch(url,);
+        const response = await fetch(url);
         if (!response.ok) {
             console.error(`Failed to fetch data from ${url}:`, response.statusText);
             return [];
         }
         const data = await response.json();
-        // 3) Store in cache for 7 days
         const expiry = Date.now() + CACHE_DURATION_MS;
-        localStorage.setItem(cacheKey, JSON.stringify({data, expiry}));
+        try {
+            localStorage.setItem(cacheKey, JSON.stringify({data, expiry}));
+        } catch (e) {
+            if (e.name === 'QuotaExceededError') {
+                console.warn('LocalStorage quota exceeded. Clearing all cache.');
+                localStorage.clear();
+            } else {
+                throw e;
+            }
+        }
         return data;
     }
 
-    // -------------------- Load Year Folders (Default View) --------------------
-    async function loadYearFolders() {
+    // Load Year Folders (Default View)
+    async function loadYearFolders(job_view) {
         console.log('Loading Year Folders...');
-        let job_view = getQueryParam('job_view');
-        if (!job_view) {
-            job_view = 'applied';
-        }
-
-        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
 
         const years = await fetchData(`${apiUrl}`);
-        years.sort((a, b) => b.name.localeCompare(a.name)); 
-        renderItems(years, 'year');
+        years.sort((a, b) => b.name.localeCompare(a.name));
+        renderItems(job_view, years, 'year');
     }
+
     const monthOrder = {
         "January": 1, "February": 2, "March": 3, "April": 4,
         "May": 5, "June": 6, "July": 7, "August": 8,
         "September": 9, "October": 10, "November": 11, "December": 12
     };
-    // -------------------- Load Month Folders for a Specific Year --------------------
-    async function loadMonthFolders(year) {
-        console.log('Loading Month Folders for:', year);
-        let job_view = getQueryParam('job_view');
-        if (!job_view) {
-            job_view = 'applied';
-        }
 
-        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
+    // Load Month Folders for a Specific Year
+    async function loadMonthFolders(job_view, year) {
+        console.log('Loading Month Folders for:', year);
 
         const url = `${apiUrl}${year}`;
         const months = await fetchData(url);
         months.sort((a, b) => monthOrder[b.name] - monthOrder[a.name]);
-        renderItems(months, 'month', year);
+        renderItems(job_view, months, 'month', year);
     }
 
-    // -------------------- Load JSON Files for a Specific Month --------------------
-    async function loadJsonFiles(year, month) {
+    // Load JSON Files for a Specific Month
+    async function loadJsonFiles(job_view, year, month) {
         console.log('Loading JSON Files for:', year, month);
-        let job_view = getQueryParam('job_view');
-        if (!job_view) {
-            job_view = 'applied';
-        }
-
-        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
 
         const url = `${apiUrl}${year}/${month}`;
         const files = await fetchData(url);
         files.sort((a, b) => {
-            const dateA = new Date(a.name.split('.json')[0].split('-').reverse().join('-')); // Convert to YYYY-MM-DD
+            const dateA = new Date(a.name.split('.json')[0].split('-').reverse().join('-'));
             const dateB = new Date(b.name.split('.json')[0].split('-').reverse().join('-'));
-            return dateB - dateA; // Sort latest first
+            return dateB - dateA;
         });
-        renderItems(files, 'file', year, month);
+        renderItems(job_view, files, 'file', year, month);
     }
 
-    // -------------------- Render Items (Year, Month, File) --------------------
-    function renderItems(items, view, year = '', month = '') {
-        // Clear UI
+    // Render Items (Year, Month, File)
+    function renderItems(job_view, items, view, year = '', month = '') {
         const container = document.getElementById('jsonTree');
         container.innerHTML = '';
 
-        // Show or hide our custom back button as needed
         maybeShowBackButton();
 
         items.forEach(item => {
-            // Year
             if (view === 'year' && item.type === 'dir') {
                 createItem(item.name, '📁', () => {
-                    // Navigate to month view in URL
-                    window.location.href = `index.html?view=month&year=${item.name}`;
+                    window.location.href = `index.html?job_view=${job_view}&view=month&year=${item.name}`;
                 });
-            }
-            // Month
-            else if (view === 'month' && item.type === 'dir') {
+            } else if (view === 'month' && item.type === 'dir') {
                 createItem(item.name, '📁', () => {
-                    // Navigate to file view in URL
-                    window.location.href = `index.html?view=file&year=${year}&month=${item.name}`;
+                    window.location.href = `index.html?job_view=${job_view}&view=file&year=${year}&month=${item.name}`;
                 });
-            }
-            // File
-            else if (view === 'file' && item.type === 'file' && item.name.endsWith('.json')) {
+            } else if (view === 'file' && item.type === 'file' && item.name.endsWith('.json')) {
                 createItem(item.name, '📄', () => {
-                    // Go to jobs.html with no "appliedjobs/jsons" in param
-                    window.location.href = `jobs.html?file=${item.name}&year=${year}&month=${month}`;
+                    window.location.href = `jobs.html?job_view=${job_view}&file=${item.name}&year=${year}&month=${month}`;
                 });
             }
         });
     }
 
-    // -------------------- Helper: Create Clickable Item --------------------
+    // Helper: Create Clickable Item
     function createItem(name, icon, onClick) {
         const div = document.createElement('div');
         div.classList.add('item');
@@ -220,21 +230,43 @@
         document.getElementById('jsonTree').appendChild(div);
     }
 
-    // -------------------- Page Init --------------------
+    // Tab Switching
+    document.getElementById('appliedTab').addEventListener('click', () => {
+        switchTab('applied');
+    });
+
+    document.getElementById('newTab').addEventListener('click', () => {
+        switchTab('new');
+    });
+
+    function switchTab(job_view) {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(`${job_view}Tab`).classList.add('active');
+        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
+        loadYearFolders(job_view);
+    }
+
+    // Page Init
     document.addEventListener('DOMContentLoaded', async () => {
-        const params = new URLSearchParams(window.location.search);
-        const view = params.get('view');
-        const year = params.get('year');
-        const month = params.get('month');
+        let job_view = getQueryParam('job_view');
+        if (!job_view) {
+            job_view = 'applied';
+        }
+
+        apiUrl = `https://api.github.com/repos/raghavsatyadev/raghavsatyadev.github.io/contents/appliedjobs/${job_view}/`;
+        const view = getQueryParam('view');
+        const year = getQueryParam('year');
+        const month = getQueryParam('month');
 
         if (view === 'month' && year) {
-            await loadMonthFolders(year);
+            await loadMonthFolders(job_view, year);
         } else if (view === 'file' && year && month) {
-            await loadJsonFiles(year, month);
+            await loadJsonFiles(job_view, year, month);
         } else {
-            // Default => Show Year Folders
-            await loadYearFolders();
+            await loadYearFolders(job_view);
         }
+
+        document.getElementById(`${job_view}Tab`).classList.add('active');
     });
 </script>
 </body>

@@ -153,7 +153,6 @@
             }
         }
         // 2) fetch from local path
-        console.log(`Fetching job data: ${path}`);
         const response = await fetch(path);
         if (!response.ok) {
             throw new Error(`Failed to fetch job data from: ${path}`);
@@ -161,7 +160,18 @@
         const data = await response.json();
         // 3) store 7 days
         const expiry = Date.now() + CACHE_DURATION_MS;
-        localStorage.setItem(cacheKey, JSON.stringify({data, expiry}));
+        // write try catch here
+
+        try {
+            localStorage.setItem(cacheKey, JSON.stringify({data, expiry}));
+        } catch (e) {
+            if (e.name === 'QuotaExceededError') {
+                console.warn('LocalStorage quota exceeded. Clearing all cache.');
+                localStorage.clear();
+            } else {
+                throw e;
+            }
+        }
         return data;
     }
 
@@ -213,6 +223,21 @@
 
                 // Description
                 const descriptionCell = document.createElement('td');
+
+                // Created Date
+                const createdDateDiv = document.createElement('div');
+                createdDateDiv.className = 'created-date';
+                const options = {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                };
+                createdDateDiv.textContent = `Created at: ${new Date(job.created_at).toLocaleString('en-GB', options)}`;
+                descriptionCell.appendChild(createdDateDiv);
+
                 const descriptionDiv = document.createElement('div');
                 descriptionDiv.className = 'description';
                 descriptionDiv.innerHTML = DOMPurify.sanitize(marked.parse(job.description || ''));
