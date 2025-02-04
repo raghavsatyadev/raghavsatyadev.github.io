@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Android Native Developer Jobs 4-10 YOE</title>
+    <title>Applied Jobs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,7 +54,7 @@
 </head>
 <body>
 
-<h1>Applied Jobs</h1>
+<h1>Android Native Developer Jobs 4-10 YOE</h1>
 <!-- We'll show/hide this depending on the view -->
 <button id="backBtn" class="back-button hidden">Back</button>
 <div id="jsonTree" class="container"></div>
@@ -68,14 +68,32 @@
     function maybeShowBackButton() {
         const params = new URLSearchParams(window.location.search);
         const view = params.get('view');
+        const year = params.get('year');
+        const month = params.get('month');
         // If view is not set or is 'year', we are at the top-level (hide button).
         // Otherwise, show button for 'month' or 'file'.
         const hideBackButton = (!view || view === 'year');
-        document.getElementById('backBtn').className = hideBackButton ? "hidden" : "back-button";
+        let backButton = document.getElementById('backBtn');
+        backButton.className = hideBackButton ? "hidden" : "back-button";
+
+        backButton.dataset.view = view;
+        backButton.dataset.year = year;
+        backButton.dataset.month = month;
     }
 
     // Our custom back button just calls the system history back
-    document.getElementById('backBtn').addEventListener('click', () => history.back());
+    document.getElementById('backBtn').addEventListener('click', () => {
+        const backBtn = document.getElementById('backBtn');
+        const view = backBtn.dataset.view;
+        const year = backBtn.dataset.year;
+        const month = backBtn.dataset.month;
+
+        if (view === 'file') {
+            window.location.href = `index.html?view=month&year=${year}`;
+        } else if (view === 'month') {
+            window.location.href = `index.html?view=year`;
+        }
+    });
 
     // -------------------- Data Fetch with 7-Day Caching --------------------
     async function fetchData(url) {
