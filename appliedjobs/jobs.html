@@ -122,7 +122,13 @@
     const CACHE_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
 
     // Custom back button => same as system back
-    document.getElementById('backBtn').addEventListener('click', () => history.back());
+    document.getElementById('backBtn').addEventListener('click', () => {
+        const job_view = getQueryParam('job_view');
+        const fileName = getQueryParam('file');
+        const year = getQueryParam('year');
+        const month = getQueryParam('month');
+        window.location.href = `index.html?job_view=${job_view}&view=file&year=${year}&month=${month}`;
+    });
 
     // Query param helper
     function getQueryParam(param) {
