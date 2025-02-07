@@ -1,10 +1,13 @@
 SELECT
   "companyName",
   "externalUrl",
-  "description"
+  "description",
+  "created_at"
 FROM
   jobs
-WHERE status = 'applied';
+WHERE
+  status = 'applied'
+
 
 
 UPDATE jobs
