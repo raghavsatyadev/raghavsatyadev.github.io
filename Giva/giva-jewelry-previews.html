@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIVA Jewelry Collection - Link Previews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 25px;
+            animation: fadeIn 1s ease;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .link-card:hover .preview-image {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .preview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .link-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2d3748;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 2.6em;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ GIVA Jewelry Collection</h1>
+            <p class="subtitle">Click any preview to explore beautiful jewelry</p>
+        </header>
+
+        <div class="stats">
+            <p>📍 <strong id="linkCount">0</strong> Beautiful Pieces Available</p>
+        </div>
+
+        <div class="grid" id="linkGrid">
+            <!-- Links will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Product data with titles and icons
+        const productTitles = [
+            { title: "925 Silver Jewellery Collection", icon: "💍" },
+            { title: "Silver Mystical Snake Nail Ring", icon: "🐍" },
+            { title: "Silver and Golden Weave Ring", icon: "✨" },
+            { title: "Rose Gold Concentric Circle Sunflower Ring", icon: "🌻" },
+            { title: "Silver Gleaming Blue Fish Tail Ring", icon: "🐟" },
+            { title: "Silver Peacock On a Throne Ring", icon: "🦚" },
+            { title: "Rose Gold Sunshine Ring", icon: "☀️" },
+            { title: "Silver Radiant Heart 2-in-1 Rings", icon: "💖" },
+            { title: "Silver Tranquil Love Ring", icon: "💕" },
+            { title: "Rose Gold Royal Pink Floral Ring", icon: "🌸" },
+            { title: "Silver Chambered Ring", icon: "💎" },
+            { title: "Rose Gold Charmante Ring", icon: "✨" },
+            { title: "Rose Gold Full Of Love Ring", icon: "❤️" },
+            { title: "Silver Its Love Ring", icon: "💝" },
+            { title: "Silver Valentine Ring", icon: "💘" },
+            { title: "Silver Heart-to-Heart Ring", icon: "💗" },
+            { title: "Silver Infinity Ring", icon: "♾️" },
+            { title: "Silver Flower Ring - Sky High", icon: "🌺" },
+            { title: "Silver Opulent Teardrop Ring", icon: "💧" },
+            { title: "Silver Wing It Ring", icon: "🦋" },
+            { title: "Silver Precious Petals Ring", icon: "🌹" },
+            { title: "Silver Fall in Love Ring", icon: "🍂" },
+            { title: "Silver Strong Heart Ring", icon: "💪" },
+            { title: "Silver Lavender Love Ring", icon: "💜" },
+            { title: "Rose Gold Magnificent Cocktail Ring", icon: "🍸" },
+            { title: "Silver Fused Charm Ring", icon: "🔗" },
+            { title: "Silver Stacked Shine Ring", icon: "⭐" },
+            { title: "Silver Zircon Crown Heart Ring", icon: "👑" },
+            { title: "Rose Gold Zircon Panache Ring", icon: "💫" }
+        ];
+
+        // Image mapping from JSON
+        const imageMapping = [
+            { "url": "https://www.giva.co/collections/925-silver-jewellery", "image": null, "index": 0 },
+            { "url": "https://www.giva.co/products/silver-mystical-nail-ring", "image": "giva_images/product_01_f420e217.jpg", "index": 1 },
+            { "url": "https://www.giva.co/products/silver-golden-weave-ring", "image": "giva_images/product_02_6a3a1e88.jpg", "index": 2 },
+            { "url": "https://www.giva.co/products/rose-gold-concentric-circle-sunflower-ring", "image": "giva_images/product_03_36a80af5.jpg", "index": 3 },
+            { "url": "https://www.giva.co/products/sky-blue-stoned-fish-tail-ring-in-silver-plated", "image": "giva_images/product_04_5b9ac48e.jpg", "index": 4 },
+            { "url": "https://www.giva.co/products/silver-peacock-on-a-throne-ring", "image": "giva_images/product_05_259a0c60.jpg", "index": 5 },
+            { "url": "https://www.giva.co/products/rose-gold-sunshine-ring", "image": "giva_images/product_06_ca0e4f7b.jpg", "index": 6 },
+            { "url": "https://www.giva.co/products/silver-radiant-heart-2-in-1-rings", "image": "giva_images/product_07_24536a7e.jpg", "index": 7 },
+            { "url": "https://www.giva.co/products/silver-tranquil-love-ring", "image": "giva_images/product_08_0ea810e4.jpg", "index": 8 },
+            { "url": "https://www.giva.co/products/rose-gold-royal-pink-floral-ring", "image": "giva_images/product_09_d3f41f6d.jpg", "index": 9 },
+            { "url": "https://www.giva.co/products/silver-chambered-ring", "image": "giva_images/product_10_22408c68.jpg", "index": 10 },
+            { "url": "https://www.giva.co/products/rose-gold-charmante-ring", "image": "giva_images/product_11_287bbae3.jpg", "index": 11 },
+            { "url": "https://www.giva.co/products/rose-gold-full-of-love-ring", "image": "giva_images/product_12_368696c6.jpg", "index": 12 },
+            { "url": "https://www.giva.co/products/silver-its-love-ring", "image": "giva_images/product_13_7edd622b.jpg", "index": 13 },
+            { "url": "https://www.giva.co/products/silver-valentine-ring", "image": "giva_images/product_14_371a2fa6.jpg", "index": 14 },
+            { "url": "https://www.giva.co/products/silver-heart-to-heart-ring", "image": "giva_images/product_15_0a290034.jpg", "index": 15 },
+            { "url": "https://www.giva.co/products/silver-infinite-beauty-ring", "image": "giva_images/product_16_728c8ae7.jpg", "index": 16 },
+            { "url": "https://www.giva.co/products/silver-you-go-girl-ring", "image": "giva_images/product_17_707bd336.jpg", "index": 17 },
+            { "url": "https://www.giva.co/products/silver-opulent-teardrop-ring", "image": "giva_images/product_18_cb4ea450.jpg", "index": 18 },
+            { "url": "https://www.giva.co/products/silver-wing-it-ring", "image": "giva_images/product_19_58e93755.jpg", "index": 19 },
+            { "url": "https://www.giva.co/products/silver-precious-petals-ring", "image": "giva_images/product_20_bcf39d8f.jpg", "index": 20 },
+            { "url": "https://www.giva.co/products/silver-fall-in-love-ring", "image": "giva_images/product_21_2389b35f.jpg", "index": 21 },
+            { "url": "https://www.giva.co/products/silver-strong-heart-ring", "image": "giva_images/product_22_8d08a6db.jpg", "index": 22 },
+            { "url": "https://www.giva.co/products/silver-lavender-love-ring", "image": "giva_images/product_23_01361e7b.jpg", "index": 23 },
+            { "url": "https://www.giva.co/products/rose-gold-magnificent-cocktail-ring", "image": "giva_images/product_25_ccf97260.jpg", "index": 25 },
+            { "url": "https://www.giva.co/products/silver-fused-charm-ring", "image": "giva_images/product_26_87b00e97.jpg", "index": 26 },
+            { "url": "https://www.giva.co/products/silver-stacked-shine-ring", "image": "giva_images/product_27_1f5e6aee.jpg", "index": 27 },
+            { "url": "https://www.giva.co/products/silver-zircon-crown-heart-ring", "image": "giva_images/product_28_3c42b274.jpg", "index": 28 },
+            { "url": "https://www.giva.co/products/rose-gold-zircon-panache-ring-1", "image": "giva_images/product_29_883fe891.jpg", "index": 29 }
+        ];
+
+        // Update link count
+        document.getElementById('linkCount').textContent = imageMapping.length;
+
+        // Generate link cards
+        const linkGrid = document.getElementById('linkGrid');
+        imageMapping.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'link-card';
+            card.style.animationDelay = `${index * 0.03}s`;
+
+            const productInfo = productTitles[item.index] || { title: "GIVA Product", icon: "💎" };
+
+            // Create preview content
+            let previewContent;
+            if (item.image) {
+                previewContent = `<img src="${item.image}" alt="${productInfo.title}" onerror="this.parentElement.innerHTML='<div class=\\'placeholder\\'>${productInfo.icon}</div>';">`;
+            } else {
+                previewContent = `<div class="placeholder">${productInfo.icon}</div>`;
+            }
+
+            card.innerHTML = `
+                <div class="preview-image">
+                    ${previewContent}
+                </div>
+                <div class="link-title">${productInfo.title}</div>
+            `;
+
+            card.addEventListener('click', () => {
+                window.open(item.url, '_blank');
+            });
+
+            linkGrid.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>
