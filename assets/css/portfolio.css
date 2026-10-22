@@ -28,3 +28,5 @@
 .contact-card h2 { font-size: clamp(2rem, 5vw, 3.4rem); }
 .contact-card .btn-row { justify-content: center; position: relative; z-index: 1; }
 .contact-card .btn-tonal { background: var(--md-primary-container); color: var(--md-on-primary-container); }
+.contact-card .btn { max-width: 100%; overflow-wrap: anywhere; }
+@media (max-width: 400px) { .contact-card .btn { padding: 0 1rem; } }

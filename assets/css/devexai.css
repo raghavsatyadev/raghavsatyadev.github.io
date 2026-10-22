@@ -27,8 +27,14 @@
 /* Mini stats inside the panel */
 .mini-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin: 1.25rem 0 0; }
 .mini-stats div { background: color-mix(in srgb, var(--md-surface) 55%, transparent); border-radius: var(--shape-lg); padding: 0.8rem 1rem; }
-.mini-stats b { display: block; font: 800 1.6rem/1.1 var(--font-brand); font-variation-settings: "wdth" 120; }
-.mini-stats span { font-size: 0.85rem; opacity: 0.85; }
+.mini-stats div { min-width: 0; }
+.mini-stats b { display: block; font: 800 1.6rem/1.1 var(--font-brand); font-variation-settings: "wdth" 120; overflow-wrap: anywhere; }
+.mini-stats span { display: block; margin-top: 0.3rem; font-size: 0.85rem; line-height: 1.4; opacity: 0.85; }
+@media (max-width: 480px) {
+  .flagship { padding: 1.25rem; }
+  .mini-stats div { padding: 0.75rem; }
+  .mini-stats b { font-size: 1.3rem; font-variation-settings: "wdth" 100; }
+}
 
 /* Pipeline stepper: a wrapping row of numbered stages */
 .pipeline { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; counter-reset: step; }
@@ -82,3 +88,5 @@
 .code-card .c { opacity: 0.6; }
 .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1.25rem; align-items: start; }
 .status-done { color: var(--md-primary); font-weight: 700; }
+.grid-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 480px) { .grid-pair { grid-template-columns: 1fr; } }
