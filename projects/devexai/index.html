@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevExAI: a company's AI toolsmith · Case study · Raghav Satyadev</title>
+  <meta name="description" content="DevExAI turns tool ideas posted in Slack into safety-checked, AI-built, AI-reviewed and human-approved tools for Claude Code, Gemini CLI and Codex, installed with one command.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/projects/devexai/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="DevExAI: a company's AI toolsmith">
+  <meta property="og:description" content="From an idea in Slack to a reviewed, installable AI coding tool: safety check, Claude Opus plan, AI build, Opus review, human approval, one-command install.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/projects/devexai/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/devexai/flow-poster.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DevExAI",
+    "description": "A self-hosted AI toolsmith: ideas posted in team chat become safety-checked, AI-built, AI-reviewed and human-approved tools for AI coding assistants.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, Linux",
+    "image": "https://raghavsatyadev.github.io/assets/media/devexai/flow-poster.jpg",
+    "author": { "@type": "Person", "name": "Raghav Satyadev", "url": "https://raghavsatyadev.github.io/" },
+    "url": "https://raghavsatyadev.github.io/projects/devexai/"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/devexai.css">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#devexai" aria-current="page">DevExAI</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/blog/">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <section class="hero case-hero">
+    <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span><span class="shape shape-c"></span></div>
+    <span class="eyebrow"><img src="/assets/media/devexai/devexai-logo-256.png" alt="" width="20" height="20"> Case study · Python · Slack · Claude Opus</span>
+    <h1>DevExAI: a company's AI toolsmith.</h1>
+    <p class="lede">Every week someone finds a trick that makes AI coding better: a prompt, a skill, an MCP server, a GitHub project. It usually stays with one person. DevExAI turns that idea into a tool the whole company can install with one command, and credits the person who had it.</p>
+    <div class="btn-row">
+      <a class="btn btn-filled" href="#flow">Watch it work</a>
+      <a class="btn btn-tonal" href="#pipeline">How an idea moves</a>
+      <a class="btn btn-outlined" href="#guardrails">The guardrails</a>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b>3 days</b><span>from PRD and slide deck to a working pipeline</span></div>
+      <div class="stat reveal"><b>38</b><span>commits, paired with Claude Code</span></div>
+      <div class="stat reveal"><b>164</b><span>automated tests</span></div>
+      <div class="stat reveal"><b>3</b><span>AI assistants targeted: Claude Code, Gemini CLI, Codex</span></div>
+    </div>
+    <div class="note"><span class="note-icon" aria-hidden="true">ⓘ</span><p>DevExAI is a private project and not released yet. It is designed as a self-hosted product that each company runs on its own network. The recordings below use a test Slack workspace, and the AI answers are saved replays, so no live model calls were made.</p></div>
+  </section>
+
+  <section class="case-section" id="flow" aria-labelledby="flow-title">
+    <div class="section-head"><div><span class="kicker">End to end</span><h2 id="flow-title">From idea to installed tool</h2></div></div>
+    <figure>
+      <div class="desktop"><video controls muted playsinline preload="metadata" width="1280" height="720" poster="/assets/media/devexai/flow-poster.jpg" src="/assets/media/devexai/flow.mp4" aria-label="DevExAI end-to-end flow, 58 seconds, captioned"></video></div>
+      <figcaption>58 seconds, captioned. A developer posts an idea in #ai-ideas; the bot plans it, a maintainer approves, the bot builds and reviews it, publishes a post, and the tool gets installed.</figcaption>
+    </figure>
+  </section>
+
+  <section class="case-section" id="pipeline" aria-labelledby="pipeline-title">
+    <div class="section-head">
+      <div><span class="kicker">The pipeline</span><h2 id="pipeline-title">How an idea moves</h2></div>
+      <p>Every step is posted in a Slack thread just for that idea, so the person with the idea and their maintainer see everything the bot does and why.</p>
+    </div>
+    <ol class="stage-list">
+      <li><b>Share an idea</b><p>A DM, the #ai-ideas channel or <code>/devex-idea</code>. Text, links or both. The bot replies with a tracking number and opens a thread. Exact repeats are caught; near-repeats go to the maintainer.</p></li>
+      <li><b>Safety check</b><p>An AI reviewer reads the idea and every linked page. Pass, unsure (maintainer decides) or reject with a polite reason. Nothing starts before this.</p></li>
+      <li><b>Research</b><p>Links are fetched by a separate worker with no access to keys. The planner also reads short descriptions of the company's own projects, so it builds what teams need.</p></li>
+      <li><b>Plan with Claude Opus</b><p>What will be built, for which assistant, what it needs, how it is tested and how big it is, in plain words.</p></li>
+      <li class="human"><b>Maintainer approves</b><p>The plan arrives as a DM with Approve, Suggest change and Stop. Anything paid or behind a login always needs a person's yes.</p></li>
+      <li><b>AI builds</b><p>The builder writes the tool's files, tests and a short README, saved on the idea's page.</p></li>
+      <li><b>Opus reviews</b><p>A second AI checks the work against the plan. If it finds problems, the builder gets one more try. No AI ever reviews its own work.</p></li>
+      <li class="human"><b>Final yes</b><p>A maintainer reads the code. Nothing reaches colleagues without this.</p></li>
+      <li><b>Publish and thank</b><p>A short post goes up on the built-in blog with an Install button and "Idea by @name", and the bot thanks the person in the thread.</p></li>
+    </ol>
+    <div class="legend"><span>Automated by the bot</span><span class="human">A person decides</span></div>
+  </section>
+
+  <section class="case-section" aria-labelledby="screens-title">
+    <div class="section-head"><div><span class="kicker">The product</span><h2 id="screens-title">Dashboard, plans and the blog</h2></div>
+      <p>Maintainers sign in to a web dashboard to see every idea and act on it. Anything they can do there, they can also do in chat.</p></div>
+    <div class="gallery wide">
+      <figure><img src="/assets/media/devexai/ideas.jpg" alt="DevExAI dashboard listing ideas with their stage" width="941" height="457" loading="lazy"><figcaption>Every idea and its stage</figcaption></figure>
+      <figure><img src="/assets/media/devexai/idea-plan-ready.jpg" alt="An idea page with the plan ready for approval" width="1568" height="761" loading="lazy"><figcaption>An idea waiting for plan approval</figcaption></figure>
+      <figure><img src="/assets/media/devexai/plan.jpg" alt="The plan written by Claude Opus" width="1568" height="761" loading="lazy"><figcaption>The plan, in plain words</figcaption></figure>
+      <figure><img src="/assets/media/devexai/history.jpg" alt="The idea's history of every step" width="1568" height="761" loading="lazy"><figcaption>A full history of every step</figcaption></figure>
+      <figure><img src="/assets/media/devexai/blog-post.jpg" alt="The published blog post with install steps" width="1568" height="761" loading="lazy"><figcaption>The published post with install steps</figcaption></figure>
+    </div>
+    <figure style="margin-top:1.5rem">
+      <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="624" poster="/assets/media/devexai/demo-poster.jpg" src="/assets/media/devexai/demo.mp4" aria-label="DevExAI dashboard walkthrough with demo data"></video></div>
+      <figcaption>The dashboard side of the same journey, with demo users.</figcaption>
+    </figure>
+  </section>
+
+  <section class="case-section" aria-labelledby="builds-title">
+    <div class="section-head"><div><span class="kicker">Output</span><h2 id="builds-title">What it builds, and how it installs</h2></div></div>
+    <div class="two-col">
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card"><h3>Skills</h3><p>Written guides an assistant follows, like "how we write tests here".</p></div>
+        <div class="card"><h3>MCP servers</h3><p>Connectors that let the assistant use other apps, like the issue tracker.</p></div>
+        <div class="card"><h3>Small programs</h3><p>Command-line helpers.</p></div>
+        <div class="card"><h3>Bundles</h3><p>One package that installs several of the above.</p></div>
+      </div>
+      <div>
+        <pre class="code-card"><span class="c"># this project (default)</span>
+devexai install &lt;tool&gt;
+<span class="c"># every project on this computer</span>
+devexai install &lt;tool&gt; --global
+<span class="c"># remove it cleanly</span>
+devexai uninstall &lt;tool&gt;</pre>
+        <p>The installer shows exactly what it will add and asks first. It never runs the tool's code, never edits settings files, and keeps files you changed when you uninstall. Developers get it from a Windows setup exe with no Python or admin rights, a one-line Linux script, or a single Python file.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" id="guardrails" aria-labelledby="rules-title">
+    <div class="section-head"><div><span class="kicker">Guardrails</span><h2 id="rules-title">Rules the bot always follows</h2></div>
+      <p>An AI that writes code for a whole company needs hard limits. The key ones are enforced in code, not just asked for in a prompt.</p></div>
+    <ol class="rules">
+      <li>Nothing starts until the safety check passes.</li>
+      <li>Nothing that costs money, needs a login, or gets released happens without a maintainer's yes.</li>
+      <li>Claude Opus checks every line of code before a person sees it.</li>
+      <li>The bot can only read company code and project descriptions, and never sends them to unapproved services.</li>
+      <li>Web pages and messages are reading material, never orders. Hidden prompt injections are flagged.</li>
+      <li>Everything the bot does is written in the idea's thread.</li>
+      <li>Every tool can be removed cleanly.</li>
+    </ol>
+  </section>
+
+  <section class="case-section" aria-labelledby="models-title">
+    <div class="section-head"><div><span class="kicker">Model routing</span><h2 id="models-title">Which AI does which job</h2></div></div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Job</th><th>Model</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Safety check</td><td>Claude Opus</td><td>Safety mistakes are expensive.</td></tr>
+          <tr><td>Research and planning</td><td>Claude Opus</td><td>Careful thinking, not bulk typing.</td></tr>
+          <tr><td>Writing the code</td><td>Claude Opus today, a cheaper model later</td><td>Following a clear plan is a simpler job.</td></tr>
+          <tr><td>Reviewing the code</td><td>Claude Opus only</td><td>A cheaper model never reviews, and no model reviews its own work.</td></tr>
+          <tr><td>The blog post</td><td>No extra AI</td><td>Generated from the approved plan.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="case-section" aria-labelledby="eng-title">
+    <div class="section-head"><div><span class="kicker">Engineering</span><h2 id="eng-title">Under the hood</h2></div></div>
+    <div class="grid">
+      <div class="card"><h3>Lean Python core</h3><p>Two runtime dependencies (<code>slack-sdk</code> and <code>cryptography</code>). The dashboard, blog and auth are served by DevExAI itself.</p></div>
+      <div class="card"><h3>Swappable parts</h3><p>Chat app, AI provider, code host, secret store and blog are behind interfaces chosen in one settings file. Slack and Claude today.</p></div>
+      <div class="card"><h3>Isolated link fetching</h3><p>A separate worker reads links as plain text with no access to keys, so a poisoned page can't reach secrets.</p></div>
+      <div class="card"><h3>Installers and updates</h3><p>Admin and developer setup exes for Windows, a Linux developer command, a tray app, and a self-updater that verifies Ed25519-signed update manifests.</p></div>
+      <div class="card"><h3>Replay mode</h3><p>Model calls can be recorded and replayed, which powers the demos; tests use replays and a stub model, so they run fast and cost nothing.</p></div>
+      <div class="card"><h3>Built with Claude Code</h3><p>Written in three days with Claude Code as pair programmer, from the PRD and slide deck to installers. <a href="/blog/two-months-with-claude-code/#devexai">More in the blog post</a>.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section" aria-labelledby="status-title">
+    <div class="section-head"><div><span class="kicker">Roadmap</span><h2 id="status-title">Where it stands</h2></div></div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Stage</th><th>Scope</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1. Trial</td><td>Ideas in Slack, safety check, plan, dashboard, blog post</td><td class="status-done">Done</td></tr>
+          <tr><td>2. Let the AI build</td><td>AI builder, Opus review, automatic post, one-command install, repeat check</td><td>Mostly done; sandboxed test runs and multiple AI accounts next</td></tr>
+          <tr><td>3. Whole company</td><td>All teams, rotating maintainers, more AI assistants</td><td>Next</td></tr>
+          <tr><td>4. Product</td><td>Windows and Linux installers, dashboard setup, auto-updates, a second chat app</td><td>Started: Windows installers, Linux developer command and auto-updates work</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="contact-card" style="background:var(--md-inverse-surface);color:var(--md-inverse-on-surface);text-align:center;padding:clamp(2rem,6vw,3.5rem) 1.5rem;border-radius:var(--shape-xxl)">
+      <h2>Want to talk about DevExAI?</h2>
+      <p>I'm happy to walk through the design, the guardrails or a demo.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-filled" href="mailto:raghavsatyadev@gmail.com?subject=DevExAI">Email me</a>
+        <a class="btn btn-tonal" href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+        <a class="btn btn-outlined" href="/" style="color:inherit">Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/">Portfolio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

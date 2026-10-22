@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/portfolio.css">
+  <link rel="stylesheet" href="/assets/css/devexai.css">
   <script src="/assets/js/site.js" defer></script>
 </head>
 <body>
@@ -47,6 +48,7 @@
   <div class="page">
     <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
     <nav class="nav" aria-label="Main">
+      <a href="#devexai">DevExAI</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="/blog/">Blog</a>
@@ -62,7 +64,7 @@
     <h1>Android engineer building on-device AI.</h1>
     <p class="lede">I'm Raghav, a senior Android engineer with 10 years in Kotlin, Jetpack Compose and Compose Multiplatform. These days I build on-device LLM assistants and evaluation pipelines, and I work AI-first, with agentic workflows that reproduce, fix and verify bugs on real devices.</p>
     <div class="btn-row">
-      <a class="btn btn-filled" href="#projects">See my work</a>
+      <a class="btn btn-filled" href="#devexai">See my work</a>
       <a class="btn btn-tonal" href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
       <a class="btn btn-outlined" href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
       <a class="btn btn-outlined" href="mailto:raghavsatyadev@gmail.com">Email me</a>
@@ -72,6 +74,39 @@
       <div class="stat reveal"><b>3×</b><span>faster LLM evaluation runs</span></div>
       <div class="stat reveal"><b>8M+</b><span>synthetic QA pairs generated</span></div>
       <div class="stat reveal"><b>~320</b><span>AI-paired commits in two months</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="devexai" aria-labelledby="devexai-title">
+    <div class="flagship reveal">
+      <span class="kicker">Flagship project</span>
+      <div class="flagship-head">
+        <img src="/assets/media/devexai/devexai-logo-256.png" alt="" width="56" height="56">
+        <h2 id="devexai-title">DevExAI</h2>
+      </div>
+      <p class="lede">A company's AI toolsmith. Anyone posts a tool idea in team chat; DevExAI checks it is safe, plans it with Claude Opus, builds a ready-to-install tool for the team's AI coding assistants, has a second AI review every line, and publishes a post crediting the person who had the idea.</p>
+      <div class="flagship-grid">
+        <div>
+          <ol class="pipeline" aria-label="How an idea moves">
+            <li>Idea in Slack</li><li>Safety check</li><li>Research</li><li>Opus plan</li>
+            <li class="human">Maintainer OK</li><li>AI builds</li><li>Opus review</li><li class="human">Final yes</li><li>Post + install</li>
+          </ol>
+          <div class="mini-stats">
+            <div><b>3 days</b><span>from slide deck to working pipeline</span></div>
+            <div><b>164</b><span>automated tests</span></div>
+            <div><b>2 AI + 1 human</b><span>checks before a tool reaches anyone</span></div>
+            <div><b>1 command</b><span><code>devexai install &lt;tool&gt;</code></span></div>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-filled" href="/projects/devexai/">Read the case study</a>
+            <a class="btn btn-outlined" href="/projects/devexai/#flow">Watch the full flow</a>
+          </div>
+        </div>
+        <figure>
+          <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="720" poster="/assets/media/devexai/flow-poster.jpg" src="/assets/media/devexai/flow.mp4" aria-label="DevExAI end to end: an idea posted in Slack becomes a reviewed, published and installed tool"></video></div>
+          <figcaption>Idea to installed tool on a test Slack workspace. AI answers are saved replays.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -96,19 +131,6 @@
       <div class="media-row">
         <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1680" height="1050" poster="/assets/media/jobfinder/desktop-poster.jpg" src="/assets/media/jobfinder/desktop.mp4" aria-label="JobFinder desktop app tour"></video></div>
       </div>
-    </article>
-
-    <article class="spotlight reveal">
-      <div>
-        <div class="badges"><span class="chip accent">Python</span><span class="chip">AI pipeline</span><span class="chip">Slack</span></div>
-        <h3>DevExAI: the company AI toolsmith</h3>
-        <p>Anyone posts a tool idea in team chat. An AI pipeline checks it for safety, plans it, builds a ready-to-install tool for the company's AI coding assistants, and publishes a post crediting the person who had the idea.</p>
-        <ul>
-          <li>Slack bot, review dashboard and a builder with a second AI reviewer</li>
-          <li><code>devexai install &lt;tool&gt;</code>, a Windows tray app and a signed self-updater</li>
-        </ul>
-      </div>
-      <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="624" poster="/assets/media/devexai/demo-poster.jpg" src="/assets/media/devexai/demo.mp4" aria-label="DevExAI dashboard walkthrough with demo data"></video></div>
     </article>
 
     <article class="spotlight reveal">
