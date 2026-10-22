@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two Months, 11 Projects, ~320 Commits: What I Built with Claude Code · Raghav Satyadev</title>
+  <meta name="description" content="Eleven side projects, about 320 commits and a set of home-made plugins, skills and hooks: what I built with Claude Code between August and October 2026, and what I learned.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/blog/two-months-with-claude-code/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="Two Months, 11 Projects, ~320 Commits: What I Built with Claude Code">
+  <meta property="og:description" content="Eleven side projects, ~320 commits and the plugins, skills and hooks I built around Claude Code.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/blog/two-months-with-claude-code/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/og-blog-two-months.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:published_time" content="2026-10-22">
+  <meta property="article:author" content="https://raghavsatyadev.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Two Months, 11 Projects, ~320 Commits: What I Built with Claude Code",
+    "description": "Eleven side projects, about 320 commits and the plugins, skills and hooks I built around Claude Code.",
+    "image": "https://raghavsatyadev.github.io/assets/media/og-blog-two-months.jpg",
+    "datePublished": "2026-10-22",
+    "dateModified": "2026-10-22",
+    "author": { "@type": "Person", "name": "Raghav Satyadev", "url": "https://raghavsatyadev.github.io/" },
+    "mainEntityOfPage": "https://raghavsatyadev.github.io/blog/two-months-with-claude-code/",
+    "keywords": ["Claude Code", "Android", "Kotlin", "Compose Multiplatform", "AI coding", "local LLM"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/article.css">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#projects">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <article>
+    <header class="post-hero">
+      <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span></div>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/blog/">← All posts</a></nav>
+      <span class="kicker">Claude Code · Side projects</span>
+      <h1>Two Months, 11 Projects, ~320 Commits: What I Built with Claude Code</h1>
+      <div class="post-meta">
+        <span>Raghav Satyadev</span><span class="dot"></span>
+        <time datetime="2026-10-22">22 October 2026</time><span class="dot"></span>
+        <span>8 min read</span>
+      </div>
+    </header>
+
+    <div class="post-layout">
+      <div class="prose">
+        <p>Between late August and late October 2026 I ran most of my side projects through Claude Code. I didn't just use it as a chat window. I used it as a pair programmer that commits, tests and packages. When I went back through the git history I found about 320 commits co-authored with Claude across 11 projects. On top of that I'd built a set of home-made plugins, skills and hooks that now shape how every session on my PC runs.</p>
+        <p>This post covers what got built, what worked, and the tooling I made to keep the AI fast and cheap.</p>
+        <div class="note"><span class="note-icon" aria-hidden="true">ⓘ</span><p>These are personal projects. None of them is published or live yet. The videos and screenshots below come from emulators, demo data or each project's own docs.</p></div>
+
+        <hr>
+        <h2 id="highlights">The highlights</h2>
+
+        <h3 id="jobfinder">JobFinder: rewriting a job tracker from scratch <span class="count">~170 commits</span></h3>
+        <p>The biggest project was rewriting <em>first2apply</em>, an Electron job tracker, as <strong>JobFinder</strong>: a Kotlin Compose Multiplatform app for desktop and Android. Claude worked through it phase by phase:</p>
+        <ul>
+          <li>an off-screen browser pool that scrapes LinkedIn, Dice, Remote.io and Hiring Cafe, with golden tests for every parser, and a local Ollama model that parses any custom job site;</li>
+          <li>a Room database with full-text search, plus an embedded Ktor server so the phone can pair with the PC over the LAN and keep working offline;</li>
+          <li>AI job filtering and ATS resume scoring. Each task can use a local model, free online keys, OpenCode or Gemini through Antigravity, so it runs without a paid API key;</li>
+          <li>a Chrome/Edge extension that autofills job application forms;</li>
+          <li>an <strong>MCP server</strong>, so other AI agents can query my job data;</li>
+          <li>full packaging: an MSI that upgrades in place, a Linux .deb, a shrunk APK, CI I can run locally, and device tests with screenshot goldens.</li>
+        </ul>
+        <div class="figure media-row">
+          <figure style="flex: 1 1 420px">
+            <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1680" height="1050" poster="/assets/media/jobfinder/desktop-poster.jpg" src="/assets/media/jobfinder/desktop.mp4" aria-label="JobFinder desktop app tour"></video></div>
+            <figcaption>Desktop app tour, recorded by the project's own demo recorder.</figcaption>
+          </figure>
+          <figure>
+            <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="540" height="1200" poster="/assets/media/jobfinder/phone-poster.jpg" src="/assets/media/jobfinder/phone.mp4" aria-label="JobFinder Android app tour"></video></div>
+            <figcaption>Android app</figcaption>
+          </figure>
+        </div>
+        <p>It's the kind of project I would never have finished alone in two months.</p>
+
+        <h3 id="devexai">DevExAI: an AI toolsmith for a whole company <span class="count">32 commits in 3 days</span></h3>
+        <p>The idea: anyone at a company drops a tool idea into team chat. An AI pipeline checks it's safe, researches it, builds a ready-to-install tool for the company's AI coding assistants, and publishes a blog post crediting the person who had the idea. In three days it went from proposal and slide deck to a working Slack bot, a review dashboard, a builder that writes the files for approved ideas, a <code>devexai install &lt;tool&gt;</code> command, a Windows tray app and a signed self-updater.</p>
+        <figure class="figure">
+          <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="624" poster="/assets/media/devexai/demo-poster.jpg" src="/assets/media/devexai/demo.mp4" aria-label="DevExAI dashboard walkthrough"></video></div>
+          <figcaption>One idea moving through the dashboard, from plan to published post. This runs in replay mode with demo users.</figcaption>
+        </figure>
+
+        <h3 id="tvfreedom">TVFreedom: freeing Android TVs from bloat <span class="count">32 commits</span></h3>
+        <p>It started as scripts to debloat my Xiaomi TV and Mi Box. It became a phone app that finds any Android TV on the network and debloats it over adb, with backups you can restore. There's even a Termux path that installs Claude Code on the phone itself.</p>
+        <div class="figure media-row">
+          <figure>
+            <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="1070" poster="/assets/media/tvfreedom/demo-poster.jpg" src="/assets/media/tvfreedom/demo.mp4" aria-label="TVFreedom finding a TV"></video></div>
+            <figcaption>Finding a TV on the network</figcaption>
+          </figure>
+          <figure style="flex: 1 1 360px">
+            <img class="desktop" src="/assets/media/tvfreedom/tv-allow-debugging.jpg" width="1280" height="720" loading="lazy" alt="Android TV asking to allow USB debugging for the TVFreedom app">
+            <figcaption>The TV asks to trust the app's key. Both sides run on emulators here, so this shows setup and discovery only, not a full debloat.</figcaption>
+          </figure>
+        </div>
+
+        <h3 id="email-agent">An email agent that fights my support cases <span class="count">28 commits</span></h3>
+        <p>For disputes with companies, I built an agent that searches my mailbox for context, drafts the next email, and walks a case up an escalation ladder, up to a consumer complaint. I drive it from Telegram: <code>/newcase</code>, preview the draft, reply to revise it. Every address in a draft has to come from a verified source. That check is in code, not left to the prompt.</p>
+
+        <h3 id="smaller-builds">Smaller builds</h3>
+        <ul>
+          <li><strong>GrammarFix</strong>: a Grammarly-style checker for Android that runs on the phone. An on-device Qwen3 model suggests fixes in any app, and no text leaves the device.</li>
+          <li><strong><a href="https://github.com/raghavsatyadev/SimpleCricketUmpireScorer">Simple Cricket Umpire Scorer</a></strong>: finished its Compose Multiplatform migration with Material 3 Expressive motion, shared-element transitions and celebrations.</li>
+          <li><strong><a href="https://github.com/raghavsatyadev/BulkYoutubeSearch">BulkYoutubeSearch</a></strong>: moved to Compose and gained a "found songs" library with search and a player.</li>
+          <li><strong>x-digest</strong>: reads my X bookmarks without logging in, filters them with a local model, and gives me a one-table brief. It doubled as my test bench for comparing local models.</li>
+          <li><strong>CarBox_Debloater</strong> and a <strong>self-hosted RustDesk server</strong>: smaller hardware and infra jobs, done the same way.</li>
+        </ul>
+        <div class="figure media-row">
+          <figure>
+            <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="1070" poster="/assets/media/scus/demo-poster.jpg" src="/assets/media/scus/demo.mp4" aria-label="Simple Cricket Umpire Scorer demo"></video></div>
+            <figcaption>Cricket scorer</figcaption>
+          </figure>
+          <figure>
+            <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="1070" poster="/assets/media/bys/demo-poster.jpg" src="/assets/media/bys/demo.mp4" aria-label="BulkYoutubeSearch found songs demo"></video></div>
+            <figcaption>BulkYoutubeSearch</figcaption>
+          </figure>
+          <figure>
+            <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="998" poster="/assets/media/grammarfix/demo-poster.jpg" src="/assets/media/grammarfix/demo.mp4" aria-label="GrammarFix fixing text in a notes app"></video></div>
+            <figcaption>GrammarFix (from its docs, since the model only runs on ARM phones)</figcaption>
+          </figure>
+        </div>
+
+        <hr>
+        <h2 id="tooling">The tooling I built around Claude</h2>
+        <p>The projects matter, but what changed my day-to-day most was the tooling I built around Claude.</p>
+
+        <h3 id="local-model">A local model that saves tokens</h3>
+        <p>I run a small local model through Ollama and wired it into Claude Code with hooks:</p>
+        <ul>
+          <li><strong><code>lm-ask</code></strong> answers yes/no or pick-one questions about a long log, so Claude doesn't read the whole thing.</li>
+          <li><strong><code>jgl</code></strong> is local semantic code search, and <strong><code>lm-rank</code></strong> picks which search hits are worth opening.</li>
+          <li><strong><code>lm-diffcheck</code></strong> runs each project's rules over a diff before every code review.</li>
+          <li>Hooks compress long command output, stop retry loops, and block raw log dumps.</li>
+          <li>The <strong>lm-savings</strong> plugin adds <code>/lm-savings</code>, which reports what all of this saved.</li>
+        </ul>
+
+        <h3 id="plan-keeper">plan-keeper: memory across sessions</h3>
+        <p><strong>plan-keeper</strong> is a plugin that keeps a short <code>.claude/PLAN.md</code> in each project. It updates the plan after each turn and re-injects it after <code>/clear</code> or compaction, so a new session picks up where the last one stopped. Any question Claude leaves unanswered is saved to <code>DECISIONS.md</code> so it doesn't get lost.</p>
+
+        <h3 id="agent-kit">Android Agent Kit</h3>
+        <p>I pulled the rules, hooks, skills and local CI from one app into a drop-in <strong><a href="https://github.com/raghavsatyadev/Android-Agent-Kit">Android Agent Kit</a></strong>, now rolled into four of my projects. It includes per-project skills for Material 3 Expressive patterns and for testing on devices without leaving them in a messed-up state.</p>
+        <div class="gallery figure" role="list" aria-label="Apps using the Android Agent Kit">
+          <img role="listitem" src="/assets/media/agentkit/scus-list.jpg" width="420" height="936" loading="lazy" alt="Cricket scorer match list">
+          <img role="listitem" src="/assets/media/agentkit/bys-found-songs.jpg" width="420" height="936" loading="lazy" alt="BulkYoutubeSearch found songs screen">
+          <img role="listitem" src="/assets/media/grammarfix/insights.jpg" width="420" height="910" loading="lazy" alt="GrammarFix insights screen">
+        </div>
+
+        <h3 id="skills">Skills</h3>
+        <ul>
+          <li><strong>agent-routing</strong> picks the cheapest model that can do each subtask: local model first, then Gemini Flash, and Sonnet or Opus only for design-heavy work.</li>
+          <li><strong>ats</strong> and <strong>ats-smart</strong> give a scripted ATS score and a recruiter-style resume review with exact rewrites.</li>
+          <li><strong>local-model</strong> teaches every agent to use the tools above.</li>
+        </ul>
+
+        <hr>
+        <h2 id="takeaways">What I took away</h2>
+        <div class="takeaways">
+          <div class="takeaway"><b>Build in phases, and commit each one.</b><p>The big rewrites worked because every phase ended in a working, tested commit. Claude is at its best with a clear plan and a short feedback loop.</p></div>
+          <div class="takeaway"><b>Put the rules in code.</b><p>The email agent's address check, the duplicate-idea gate in DevExAI and the diff checks before review all moved from "please remember" in a prompt to code that enforces them.</p></div>
+          <div class="takeaway"><b>Spend tokens where they matter.</b><p>Local models for verdicts, free models for mechanical work, and the big model for design. That kept costs down without slowing anything.</p></div>
+          <div class="takeaway"><b>Invest in the harness.</b><p>Plugins, hooks and skills paid for themselves within days, because every project after that started faster.</p></div>
+        </div>
+
+        <p class="closing">Two months ago these were half-finished ideas in a folder. Now they're working builds with tests and demos, and the next step is getting some of them ready to publish.</p>
+
+        <nav class="post-nav" aria-label="More">
+          <a class="btn btn-filled" href="/blog/">More posts</a>
+          <a class="btn btn-tonal" href="/#projects">See the projects</a>
+        </nav>
+      </div>
+
+      <aside class="toc" aria-label="On this page">
+        <b>On this page</b>
+        <ol>
+          <li><a href="#jobfinder">JobFinder</a></li>
+          <li><a href="#devexai">DevExAI</a></li>
+          <li><a href="#tvfreedom">TVFreedom</a></li>
+          <li><a href="#email-agent">Email agent</a></li>
+          <li><a href="#smaller-builds">Smaller builds</a></li>
+          <li><a href="#tooling">Tooling</a></li>
+          <li><a href="#takeaways">Takeaways</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/">Portfolio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

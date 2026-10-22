@@ -1,0 +1,112 @@
+/* Material 3 Expressive design tokens: color roles, shape, type, motion. */
+:root {
+  color-scheme: light;
+  --md-primary: #65558f;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #e9ddff;
+  --md-on-primary-container: #21182b;
+  --md-secondary: #625b71;
+  --md-secondary-container: #e8def8;
+  --md-on-secondary-container: #1e192b;
+  --md-tertiary: #7e5260;
+  --md-tertiary-container: #ffd9e3;
+  --md-on-tertiary-container: #31101d;
+  --md-surface: #fef7ff;
+  --md-surface-dim: #ded8e0;
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #f8f1fa;
+  --md-surface-container: #f2ecf4;
+  --md-surface-container-high: #ece6ee;
+  --md-surface-container-highest: #e6e0e9;
+  --md-on-surface: #1d1b20;
+  --md-on-surface-variant: #49454f;
+  --md-outline: #7a757f;
+  --md-outline-variant: #cac4cf;
+  --md-inverse-surface: #322f35;
+  --md-inverse-on-surface: #f5eff7;
+
+  /* Shape scale (expressive: generous, sometimes asymmetric) */
+  --shape-xs: 4px;
+  --shape-sm: 8px;
+  --shape-md: 16px;
+  --shape-lg: 24px;
+  --shape-xl: 32px;
+  --shape-xxl: 48px;
+  --shape-full: 999px;
+
+  /* Type */
+  --font-brand: "Roboto Flex", "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-plain: "Roboto Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* Motion: expressive spring approximations */
+  --ease-spatial: cubic-bezier(0.38, 1.21, 0.22, 1);
+  --ease-spatial-fast: cubic-bezier(0.42, 1.67, 0.21, 0.9);
+  --ease-effects: cubic-bezier(0.34, 0.8, 0.34, 1);
+  --dur-short: 200ms;
+  --dur-medium: 400ms;
+  --dur-long: 600ms;
+
+  --elev-1: 0 1px 2px rgb(0 0 0 / 0.12), 0 1px 3px 1px rgb(0 0 0 / 0.08);
+  --elev-2: 0 1px 2px rgb(0 0 0 / 0.14), 0 2px 6px 2px rgb(0 0 0 / 0.1);
+  --elev-3: 0 4px 8px 3px rgb(0 0 0 / 0.12), 0 1px 3px rgb(0 0 0 / 0.18);
+
+  --content-width: 72ch;
+  --page-width: 1180px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --md-primary: #d0bcfe;
+    --md-on-primary: #381e72;
+    --md-primary-container: #4f378b;
+    --md-on-primary-container: #eaddff;
+    --md-secondary: #ccc2dc;
+    --md-secondary-container: #4a4458;
+    --md-on-secondary-container: #e8def8;
+    --md-tertiary: #efb8c8;
+    --md-tertiary-container: #633b48;
+    --md-on-tertiary-container: #ffd8e4;
+    --md-surface: #141218;
+    --md-surface-dim: #141218;
+    --md-surface-container-lowest: #0f0d13;
+    --md-surface-container-low: #1d1b20;
+    --md-surface-container: #211f26;
+    --md-surface-container-high: #2b2930;
+    --md-surface-container-highest: #36343b;
+    --md-on-surface: #e6e0e9;
+    --md-on-surface-variant: #cac4d0;
+    --md-outline: #938f99;
+    --md-outline-variant: #49454f;
+    --md-inverse-surface: #e6e0e9;
+    --md-inverse-on-surface: #322f35;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --md-primary: #d0bcfe;
+  --md-on-primary: #381e72;
+  --md-primary-container: #4f378b;
+  --md-on-primary-container: #eaddff;
+  --md-secondary: #ccc2dc;
+  --md-secondary-container: #4a4458;
+  --md-on-secondary-container: #e8def8;
+  --md-tertiary: #efb8c8;
+  --md-tertiary-container: #633b48;
+  --md-on-tertiary-container: #ffd8e4;
+  --md-surface: #141218;
+  --md-surface-dim: #141218;
+  --md-surface-container-lowest: #0f0d13;
+  --md-surface-container-low: #1d1b20;
+  --md-surface-container: #211f26;
+  --md-surface-container-high: #2b2930;
+  --md-surface-container-highest: #36343b;
+  --md-on-surface: #e6e0e9;
+  --md-on-surface-variant: #cac4d0;
+  --md-outline: #938f99;
+  --md-outline-variant: #49454f;
+  --md-inverse-surface: #e6e0e9;
+  --md-inverse-on-surface: #322f35;
+}

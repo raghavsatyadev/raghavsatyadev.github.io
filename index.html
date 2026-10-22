@@ -1,139 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Raghav Satyadev - Resume</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #ffffff;
-            background-color: #121212;
-            background-image: url('background.webp'); /* Add a subtle dark-themed background image */
-            background-size: cover;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparent background for content */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: slideIn 1s ease-out;
-        }
-
-        header {
-            background: rgba(51, 51, 51, 0.9);
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-        }
-
-        section {
-            margin: 20px 0;
-            animation: fadeIn 2s;
-        }
-
-        .social-links {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #4CAF50; /* Highlight color on hover */
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            font-size: 0.8em;
-            background: rgba(34, 34, 34, 0.9);
-            border-radius: 0 0 8px 8px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raghav Satyadev · Senior Android Engineer, On-Device AI</title>
+  <meta name="description" content="Raghav Satyadev: Senior Android engineer with 10 years in Kotlin, Jetpack Compose and Compose Multiplatform, now building on-device LLM assistants and LLM evaluation pipelines.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="Raghav Satyadev · Senior Android Engineer, On-Device AI">
+  <meta property="og:description" content="Kotlin, Jetpack Compose, Compose Multiplatform and on-device LLMs. 10 years of Android.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/og-portfolio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Raghav Satyadev",
+    "jobTitle": "Senior Android Engineer",
+    "worksFor": { "@type": "Organization", "name": "Infocusp Innovations" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN" },
+    "url": "https://raghavsatyadev.github.io/",
+    "email": "mailto:raghavsatyadev@gmail.com",
+    "sameAs": ["https://github.com/raghavsatyadev", "https://www.linkedin.com/in/rjsatyadev/"],
+    "knowsAbout": ["Android", "Kotlin", "Jetpack Compose", "Compose Multiplatform", "On-device LLMs", "LLM evaluation"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/portfolio.css">
+  <script src="/assets/js/site.js" defer></script>
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1>Raghav Satyadev</h1>
-        <p>Mobile Development Specialist</p>
-    </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="/blog/">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
-    <section>
-        <h2>About Me</h2>
-        <p>I am an experienced Mobile Development Specialist with a strong background in Android applications using both
-            Java and Kotlin, complemented by proficiency in cross-platform solutions with Flutter Dart. Over 7 years of
-            leading projects from inception to completion have honed my project management skills and my ability to
-            ensure client satisfaction.</p>
-    </section>
-
-    <section>
-        <h2>Experience</h2>
-        <ul>
-            <li>AI Analyst | Developer Success Manager at micro1 (Feb 2024 - Present)</li>
-            <li>Freelance Software Developer (Oct 2016 - Present)</li>
-            <li>Senior Software Developer | Tech Lead at Programming.com (Mar 2022 - Oct 2023)</li>
-            <li>Software Developer at Infibeam (Aug 2016 - Oct 2017)</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Projects</h2>
-        <p>Significant projects include enhancing large language models (LLMs), developing and integrating Android
-            services and applications, and spearheading the development of educational and logistical apps like
-            StudyByTech.</p>
-    </section>
-
-    <section>
-        <h2>Contact</h2>
-        <p>Email: raghavsatyadev@gmail.com</p>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/rjsatyadev" target="_blank">LinkedIn</a>
-            <a href="https://github.com/rjsatyadev" target="_blank">GitHub</a>
-            <!-- More social links can be added here -->
-        </div>
-    </section>
-</div>
-
-<footer>
-    <div class="container">
-        <p>© 2024 Raghav Satyadev. All rights reserved.</p>
+<main id="main" class="page">
+  <section class="hero">
+    <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span><span class="shape shape-c"></span></div>
+    <span class="eyebrow">✦ Senior Android Engineer · Ahmedabad, India</span>
+    <h1>Android engineer building on-device AI.</h1>
+    <p class="lede">I'm Raghav, a senior Android engineer with 10 years in Kotlin, Jetpack Compose and Compose Multiplatform. These days I build on-device LLM assistants and evaluation pipelines, and I work AI-first, with agentic workflows that reproduce, fix and verify bugs on real devices.</p>
+    <div class="btn-row">
+      <a class="btn btn-filled" href="#projects">See my work</a>
+      <a class="btn btn-tonal" href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+      <a class="btn btn-outlined" href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a class="btn btn-outlined" href="mailto:raghavsatyadev@gmail.com">Email me</a>
     </div>
+    <div class="stats">
+      <div class="stat reveal"><b>10</b><span>years of Android</span></div>
+      <div class="stat reveal"><b>3×</b><span>faster LLM evaluation runs</span></div>
+      <div class="stat reveal"><b>8M+</b><span>synthetic QA pairs generated</span></div>
+      <div class="stat reveal"><b>~320</b><span>AI-paired commits in two months</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="section-head">
+      <div><span class="kicker">Selected work</span><h2 id="projects-title">Projects</h2></div>
+      <p>Personal projects built over the last few months, most of them paired with Claude Code. None is published yet. <a href="/blog/two-months-with-claude-code/">Read the story</a>.</p>
+    </div>
+
+    <article class="spotlight reveal">
+      <div>
+        <div class="badges"><span class="chip accent">Compose Multiplatform</span><span class="chip">Desktop + Android</span></div>
+        <h3>JobFinder</h3>
+        <p>A from-scratch Kotlin rewrite of the Electron job tracker first2apply.</p>
+        <ul>
+          <li>Scrapes LinkedIn, Dice, Remote.io and Hiring Cafe, with golden tests for every parser</li>
+          <li>Room + full-text search; the phone pairs with the PC over an embedded Ktor server</li>
+          <li>AI job filtering and ATS resume scoring on local or free models</li>
+          <li>Browser autofill extension, an MCP server, MSI / .deb / APK packaging</li>
+        </ul>
+      </div>
+      <div class="media-row">
+        <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1680" height="1050" poster="/assets/media/jobfinder/desktop-poster.jpg" src="/assets/media/jobfinder/desktop.mp4" aria-label="JobFinder desktop app tour"></video></div>
+      </div>
+    </article>
+
+    <article class="spotlight reveal">
+      <div>
+        <div class="badges"><span class="chip accent">Python</span><span class="chip">AI pipeline</span><span class="chip">Slack</span></div>
+        <h3>DevExAI: the company AI toolsmith</h3>
+        <p>Anyone posts a tool idea in team chat. An AI pipeline checks it for safety, plans it, builds a ready-to-install tool for the company's AI coding assistants, and publishes a post crediting the person who had the idea.</p>
+        <ul>
+          <li>Slack bot, review dashboard and a builder with a second AI reviewer</li>
+          <li><code>devexai install &lt;tool&gt;</code>, a Windows tray app and a signed self-updater</li>
+        </ul>
+      </div>
+      <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="624" poster="/assets/media/devexai/demo-poster.jpg" src="/assets/media/devexai/demo.mp4" aria-label="DevExAI dashboard walkthrough with demo data"></video></div>
+    </article>
+
+    <article class="spotlight reveal">
+      <div>
+        <div class="badges"><span class="chip accent">Android</span><span class="chip">adb</span><span class="chip">mDNS</span></div>
+        <h3>TVFreedom</h3>
+        <p>A phone app that finds any Android TV on the network and debloats it over adb, with backups you can restore and an optional Claude-planned debloat through Termux.</p>
+      </div>
+      <div class="media-row">
+        <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="1070" poster="/assets/media/tvfreedom/demo-poster.jpg" src="/assets/media/tvfreedom/demo.mp4" aria-label="TVFreedom finding a TV"></video></div>
+        <div class="phone sm"><img src="/assets/media/tvfreedom/setup.jpg" width="420" height="937" loading="lazy" alt="TVFreedom guided setup screen"></div>
+      </div>
+    </article>
+
+    <article class="spotlight reveal">
+      <div>
+        <div class="badges"><span class="chip accent">On-device LLM</span><span class="chip">llama.cpp</span><span class="chip">Qwen3</span></div>
+        <h3>GrammarFix</h3>
+        <p>A Grammarly-style writing assistant built at Infocusp in three days. An on-device Qwen3 model fixes text in any app, and no text leaves the phone.</p>
+      </div>
+      <div class="media-row">
+        <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="998" poster="/assets/media/grammarfix/demo-poster.jpg" src="/assets/media/grammarfix/demo.mp4" aria-label="GrammarFix fixing text in a notes app"></video></div>
+        <div class="phone sm"><img src="/assets/media/grammarfix/playground.jpg" width="420" height="910" loading="lazy" alt="GrammarFix playground screen"></div>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-media phone-media"><img src="/assets/media/scus/scoring.jpg" width="420" height="936" loading="lazy" alt="Cricket scorer scoring screen"></div>
+        <h3>Simple Cricket Umpire Scorer</h3>
+        <p>Open-source, offline cricket scorer with tally-counter controls. Rebuilt in Compose Multiplatform with Material 3 Expressive motion and shared-element transitions.</p>
+        <span class="meta"><a href="https://github.com/raghavsatyadev/SimpleCricketUmpireScorer">GitHub</a> · Kotlin · Room</span>
+      </article>
+      <article class="card reveal">
+        <div class="card-media phone-media"><img src="/assets/media/bys/found-songs.jpg" width="420" height="936" loading="lazy" alt="BulkYoutubeSearch found songs screen"></div>
+        <h3>BulkYoutubeSearch</h3>
+        <p>Searches YouTube for a whole list of songs at once and keeps a "found songs" library with search, artist filters, sorting and a full-screen player.</p>
+        <span class="meta"><a href="https://github.com/raghavsatyadev/BulkYoutubeSearch">GitHub</a> · Jetpack Compose</span>
+      </article>
+      <article class="card reveal">
+        <div class="card-media phone-media"><img src="/assets/media/agentkit/scus-list.jpg" width="420" height="936" loading="lazy" alt="An app built with the Android Agent Kit"></div>
+        <h3>Android Agent Kit</h3>
+        <p>Drop-in rules, skills, hooks and local CI for AI coding agents in Android repos, used across four of my apps.</p>
+        <span class="meta"><a href="https://github.com/raghavsatyadev/Android-Agent-Kit">GitHub</a> · Shell</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="open-source" aria-labelledby="oss-title">
+    <div class="section-head">
+      <div><span class="kicker">Open source</span><h2 id="oss-title">Libraries and contributions</h2></div>
+      <p>More on <a href="https://github.com/raghavsatyadev?tab=repositories">GitHub</a>.</p>
+    </div>
+    <div class="grid">
+      <a class="card reveal" href="https://github.com/raghavsatyadev/MoreApps">
+        <h3>MoreApps</h3><p>Android library on Maven Central for cross-promoting your apps and forcing soft or hard updates.</p>
+        <span class="meta">Kotlin · ★ 4</span>
+      </a>
+      <a class="card reveal" href="https://github.com/raghavsatyadev/ContactFetcher">
+        <h3>ContactFetcher</h3><p>Reads every contact with all of its emails and phone numbers.</p>
+        <span class="meta">Java · ★ 18</span>
+      </a>
+      <div class="card reveal">
+        <h3>Contributions</h3><p>Fixes in <a href="https://github.com/pbreault/adb-idea">adb-idea</a> and <a href="https://github.com/beastx-ro/first2apply">first2apply</a> for issues affecting 2,000+ developers.</p>
+        <span class="meta">Kotlin · TypeScript</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="exp-title">
+    <div class="section-head">
+      <div><span class="kicker">Career</span><h2 id="exp-title">Experience</h2></div>
+    </div>
+    <div class="exp-layout">
+      <ol class="timeline">
+        <li class="reveal">
+          <span class="when">Mar 2025 – Present</span>
+          <h3>Android Developer II (senior, on-device AI)</h3>
+          <div class="org">Infocusp Innovations · Ahmedabad</div>
+          <ul>
+            <li>Built the Compose chat and voice UI, plus 8 on-device tools, for a global consumer voice assistant running an on-device LLM</li>
+            <li>Designed a Python LLM evaluation framework (ADB + LLM-as-a-judge) and cut runtime 3× (2+ days → 16 hours)</li>
+            <li>Built a synthetic multimodal data pipeline: 2M+ images and 8M+ QA pairs, with generation 800× faster</li>
+            <li>Led a team of 5 on a Compose Multiplatform TV and movie tracking app</li>
+          </ul>
+        </li>
+        <li class="reveal">
+          <span class="when">Dec 2023 – Mar 2025</span>
+          <h3>Freelance Android Developer</h3>
+          <div class="org">Self-employed · Remote</div>
+          <ul>
+            <li>Wrote and reviewed RLHF data for coding LLMs at micro1; trained 700 contributors</li>
+            <li>Launched an open-source Android project template that saves 50+ hours of onboarding</li>
+          </ul>
+        </li>
+        <li class="reveal">
+          <span class="when">Mar 2022 – Oct 2023</span>
+          <h3>Senior Software Developer / Team Lead</h3>
+          <div class="org">Programming.com · Remote</div>
+          <ul>
+            <li>Wi-Fi printer setup for a 50K+ download app, with 95% fewer connection errors</li>
+            <li>IoT pairing over BLE or Wi-Fi hotspot in under 10 seconds, in multi-module Hilt apps</li>
+          </ul>
+        </li>
+        <li class="reveal">
+          <span class="when">Nov 2018 – Oct 2020</span>
+          <h3>Co-Founder / Lead Developer</h3>
+          <div class="org">iCodeAnalyst · Rajkot</div>
+          <ul>
+            <li>Led 5 developers across Android, iOS and web; grew the client base 150% in 18 months</li>
+            <li>An app for nurses in Mali that collected 1,900+ newborn health records</li>
+          </ul>
+        </li>
+        <li class="reveal">
+          <span class="when">Aug 2016 – Oct 2017</span>
+          <h3>Software Developer</h3>
+          <div class="org">Infibeam.com · Ahmedabad</div>
+          <ul><li>Shipped 9 Android apps on the edX open-source platform</li></ul>
+        </li>
+      </ol>
+
+      <aside class="skills-panel reveal" aria-labelledby="skills-title">
+        <h3 id="skills-title">Toolbox</h3>
+        <p class="skills-label">Mobile</p>
+        <ul class="chips"><li class="chip accent">Kotlin</li><li class="chip accent">Jetpack Compose</li><li class="chip accent">Compose Multiplatform</li><li class="chip">Java</li><li class="chip">Flutter</li><li class="chip">Coroutines &amp; Flow</li><li class="chip">Hilt</li><li class="chip">Room</li><li class="chip">Ktor</li><li class="chip">Retrofit</li></ul>
+        <p class="skills-label">AI</p>
+        <ul class="chips"><li class="chip accent">On-device LLMs</li><li class="chip">LLM evaluation</li><li class="chip">LLM-as-a-judge</li><li class="chip">Synthetic data</li><li class="chip">TTS / ASR</li><li class="chip">TFLite</li></ul>
+        <p class="skills-label">Practice</p>
+        <ul class="chips"><li class="chip">Clean Architecture</li><li class="chip">MVVM / MVI</li><li class="chip">Multi-module</li><li class="chip">CI/CD</li><li class="chip">Screenshot tests</li><li class="chip">Claude Code</li><li class="chip">Python</li></ul>
+        <p class="skills-label">Education</p>
+        <p>B.E. Computer Science, Gujarat Technological University (2012–2016)</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="blog-title">
+    <div class="section-head">
+      <div><span class="kicker">Writing</span><h2 id="blog-title">From the blog</h2></div>
+      <a class="btn btn-tonal" href="/blog/">All posts</a>
+    </div>
+    <a class="card featured blog-teaser reveal" href="/blog/two-months-with-claude-code/">
+      <div>
+        <span class="kicker">22 Oct 2026 · 8 min read</span>
+        <h3>Two Months, 11 Projects, ~320 Commits: What I Built with Claude Code</h3>
+        <p>What got built, what worked, and the plugins, skills and hooks I made to keep the AI fast and cheap.</p>
+      </div>
+      <img src="/assets/media/og-blog-two-months.jpg" width="1200" height="630" loading="lazy" alt="">
+    </a>
+  </section>
+
+  <section class="section contact" aria-labelledby="contact-title">
+    <div class="contact-card reveal">
+      <h2 id="contact-title">Let's build something.</h2>
+      <p>Android, Compose Multiplatform or on-device AI: happy to talk.</p>
+      <div class="btn-row">
+        <a class="btn btn-filled" href="mailto:raghavsatyadev@gmail.com">raghavsatyadev@gmail.com</a>
+        <a class="btn btn-tonal" href="https://www.linkedin.com/in/rjsatyadev/" rel="me">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
 </footer>
 </body>
 </html>

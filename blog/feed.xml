@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Raghav Satyadev's blog</title>
+  <subtitle>Android, on-device AI and building with AI coding tools.</subtitle>
+  <link href="https://raghavsatyadev.github.io/blog/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://raghavsatyadev.github.io/blog/" rel="alternate" type="text/html"/>
+  <id>https://raghavsatyadev.github.io/blog/</id>
+  <updated>2026-10-22T00:00:00Z</updated>
+  <author>
+    <name>Raghav Satyadev</name>
+    <uri>https://raghavsatyadev.github.io/</uri>
+  </author>
+  <entry>
+    <title>Two Months, 11 Projects, ~320 Commits: What I Built with Claude Code</title>
+    <link href="https://raghavsatyadev.github.io/blog/two-months-with-claude-code/" rel="alternate" type="text/html"/>
+    <id>https://raghavsatyadev.github.io/blog/two-months-with-claude-code/</id>
+    <published>2026-10-22T00:00:00Z</published>
+    <updated>2026-10-22T00:00:00Z</updated>
+    <summary>Eleven side projects, about 320 commits and the plugins, skills and hooks I built around Claude Code between August and October 2026.</summary>
+    <category term="Claude Code"/>
+    <category term="Android"/>
+  </entry>
+</feed>
