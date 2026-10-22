@@ -70,7 +70,9 @@ code {
   transition: border-radius var(--dur-medium) var(--ease-spatial), transform var(--dur-medium) var(--ease-spatial);
 }
 .brand:hover .brand-mark { border-radius: 50%; transform: rotate(-12deg); }
-.nav { margin-left: auto; display: flex; gap: 0.25rem; align-items: center; }
+.nav { margin-left: auto; display: flex; gap: 0.25rem; align-items: center; min-width: 0; }
+.nav a { white-space: nowrap; }
+.nav .icon-btn { flex-shrink: 0; }
 .nav a {
   color: var(--md-on-surface-variant); text-decoration: none; font-weight: 600; font-size: 0.95rem;
   padding: 0.5rem 0.9rem; border-radius: var(--shape-full);
@@ -108,8 +110,18 @@ code {
 
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  .nav a { padding: 0.45rem 0.6rem; font-size: 0.88rem; }
+  .app-bar .page { gap: 0.5rem; }
+  .brand-mark { flex-shrink: 0; }
+  .nav { gap: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { padding: 0.45rem 0.5rem; font-size: 0.86rem; }
   .brand-name { display: none; }
+}
+@media (max-width: 440px) {
+  .app-bar .page { flex-wrap: wrap; row-gap: 0; padding-block: 0.4rem; }
+  .brand-name { display: inline; }
+  .nav { order: 3; width: 100%; margin-left: 0; justify-content: space-between; }
+  .nav .icon-btn { position: absolute; top: 0.4rem; right: 1.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
