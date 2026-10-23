@@ -159,3 +159,9 @@ figcaption { font-size: 0.85rem; color: var(--md-on-surface-variant); margin-top
 }
 .note p { margin: 0; }
 .note .note-icon { font-size: 1.3rem; line-height: 1.4; }
+
+/* Whole-block link: the title's link covers its spotlight, like a.card */
+.spotlight { position: relative; }
+.spotlight h3 a.stretched { color: inherit; text-decoration: none; }
+.spotlight h3 a.stretched::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.spotlight:has(a.stretched:hover) { transform: translateY(-4px); box-shadow: var(--elev-2); }
