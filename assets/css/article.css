@@ -30,6 +30,8 @@
   background: var(--md-secondary-container); color: var(--md-on-secondary-container);
 }
 .prose ul { padding-left: 1.3rem; }
+.prose pre { background: var(--md-inverse-surface); color: var(--md-inverse-on-surface); border-radius: var(--shape-md, 12px); padding: 1rem 1.2rem; overflow-x: auto; margin: 0 0 1.2em; font: 0.85rem/1.6 var(--font-mono); }
+.prose pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
 .prose li { margin-bottom: 0.45rem; }
 .prose li::marker { color: var(--md-primary); }
 .prose hr { border: 0; height: 2px; margin: 3.5rem auto; width: 120px; border-radius: 2px; background: var(--md-outline-variant); }
