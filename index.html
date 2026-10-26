@@ -48,7 +48,7 @@
   <div class="page">
     <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="#devexai">DevExAI</a>
+      <a href="#jobfinder">JobFinder</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="/blog/">Blog</a>
@@ -64,7 +64,7 @@
     <h1>Android engineer building on-device AI.</h1>
     <p class="lede">I'm Raghav, a senior Android engineer with 10 years in Kotlin, Jetpack Compose and Compose Multiplatform. These days I build on-device LLM assistants and evaluation pipelines, and I work AI-first, with agentic workflows that reproduce, fix and verify bugs on real devices.</p>
     <div class="btn-row">
-      <a class="btn btn-filled" href="#devexai">See my work</a>
+      <a class="btn btn-filled" href="#jobfinder">See my work</a>
       <a class="btn btn-tonal" href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
       <a class="btn btn-outlined" href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
       <a class="btn btn-outlined" href="mailto:raghavsatyadev@gmail.com">Email me</a>
@@ -77,59 +77,59 @@
     </div>
   </section>
 
-  <section class="section" id="devexai" aria-labelledby="devexai-title">
+  <section class="section" id="jobfinder" aria-labelledby="jobfinder-title">
     <div class="flagship reveal">
       <span class="kicker">Flagship project</span>
       <div class="flagship-head">
-        <img src="/assets/media/devexai/devexai-logo-256.png" alt="" width="56" height="56">
-        <h2 id="devexai-title">DevExAI</h2>
+        <img src="/assets/media/jobfinder/jobfinder-logo-256.png" alt="" width="56" height="56">
+        <h2 id="jobfinder-title">JobFinder</h2>
       </div>
-      <p class="lede">A company's AI toolsmith. Anyone posts a tool idea in team chat; DevExAI checks it is safe, plans it with Claude Opus, builds a ready-to-install tool for the team's AI coding assistants, has a second AI review every line, and publishes a post crediting the person who had the idea.</p>
+      <p class="lede">Be one of the first to apply. JobFinder checks your saved searches on LinkedIn, Indeed, Glassdoor and a dozen other job boards, shows new jobs as soon as they are posted, has a local AI filter out the ones you don't want, and scores your resume against the rest. No account and no server: everything stays on your computer.</p>
       <div class="flagship-grid">
         <div>
-          <ol class="pipeline" aria-label="How an idea moves">
-            <li>Idea in Slack</li><li>Safety check</li><li>Research</li><li>Opus plan</li>
-            <li class="human">Maintainer OK</li><li>AI builds</li><li>Opus review</li><li class="human">Final yes</li><li>Post + install</li>
+          <ol class="pipeline" aria-label="How a job moves">
+            <li>Paste a search</li><li>Checked on a schedule</li><li>AI filter</li><li>ATS score</li>
+            <li>Resume fixes</li><li>Phone + browser</li><li class="human">You apply</li>
           </ol>
           <div class="mini-stats">
-            <div><b>3 days</b><span>from slide deck to working pipeline</span></div>
-            <div><b>164</b><span>automated tests</span></div>
-            <div><b>2 AI + 1 human</b><span>checks before a tool reaches anyone</span></div>
-            <div><b>1 command</b><span><code>devexai install &lt;tool&gt;</code></span></div>
+            <div><b>13+</b><span>job boards, plus any other as a custom board</span></div>
+            <div><b>Free AI</b><span>local Ollama model by default, free keys optional</span></div>
+            <div><b>0</b><span>accounts, servers or telemetry</span></div>
+            <div><b>3</b><span>installers: Windows MSI, Linux .deb, Android APK</span></div>
           </div>
           <div class="btn-row">
-            <a class="btn btn-filled" href="/projects/devexai/">Read the case study</a>
-            <a class="btn btn-outlined" href="/projects/devexai/#flow">Watch the full flow</a>
+            <a class="btn btn-filled" href="https://github.com/raghavsatyadev/JobFinder/releases/latest">Download</a>
+            <a class="btn btn-outlined" href="https://github.com/raghavsatyadev/JobFinder">Source on GitHub</a>
           </div>
         </div>
         <figure>
-          <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="720" poster="/assets/media/devexai/flow-poster.jpg" src="/assets/media/devexai/flow.mp4" aria-label="DevExAI end to end: an idea posted in Slack becomes a reviewed, published and installed tool"></video></div>
-          <figcaption>Idea to installed tool on a test Slack workspace. AI answers are saved replays.</figcaption>
+          <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1680" height="1050" poster="/assets/media/jobfinder/desktop-poster.jpg" src="/assets/media/jobfinder/desktop.mp4" aria-label="JobFinder desktop app tour: jobs, a job's ATS review and resume edits"></video></div>
+          <figcaption>Desktop tour on sample data. <a href="/blog/two-months-with-claude-code/#jobfinder">How it was built</a>.</figcaption>
         </figure>
       </div>
+      <ul class="flagship-points">
+        <li><b>Kotlin Compose Multiplatform</b>Desktop and Android apps share one codebase, with Room, Koin and an embedded Chromium (JCEF) browser that runs searches with your own sign-ins.</li>
+        <li><b>Phone pairs with the PC</b>Over an embedded Ktor server on the home network only, with a key made at pairing. macOS and iPhone builds are in progress.</li>
+        <li><b>ATS review and resume edits</b>Match score, missing keywords, exact before/after changes for a job, and ATS-friendly PDFs read back to check the new score.</li>
+        <li><b>Browser extension and MCP server</b>Fills application forms from saved answers, and lets Claude Code, Gemini CLI or Codex set up searches and filters.</li>
+      </ul>
     </div>
   </section>
 
   <section class="section" id="projects" aria-labelledby="projects-title">
     <div class="section-head">
       <div><span class="kicker">Selected work</span><h2 id="projects-title">Projects</h2></div>
-      <p>Personal projects built over the last few months, most of them paired with Claude Code. None is published yet. <a href="/blog/two-months-with-claude-code/">Read the story</a>.</p>
+      <p>Personal projects built over the last few months, most of them paired with Claude Code. Each app has installable builds on GitHub Releases; none is on Google Play yet. <a href="/blog/two-months-with-claude-code/">Read the story</a>.</p>
     </div>
 
     <article class="spotlight reveal">
       <div>
-        <div class="badges"><span class="chip accent">Compose Multiplatform</span><span class="chip">Desktop + Android</span></div>
-        <h3><a class="stretched" href="https://github.com/raghavsatyadev/JobFinder">JobFinder</a></h3>
-        <p>A from-scratch Kotlin rewrite of the Electron job tracker first2apply.</p>
-        <ul>
-          <li>Scrapes LinkedIn, Dice, Remote.io and Hiring Cafe, with golden tests for every parser</li>
-          <li>Room + full-text search; the phone pairs with the PC over an embedded Ktor server</li>
-          <li>AI job filtering and ATS resume scoring on local or free models</li>
-          <li>Browser autofill extension, an MCP server, MSI / .deb / APK packaging</li>
-        </ul>
+        <div class="badges"><span class="chip accent">AI agents</span><span class="chip">Slack</span><span class="chip">Claude Opus</span></div>
+        <h3><a class="stretched" href="/projects/devexai/">DevExAI</a></h3>
+        <p>A company's AI toolsmith. Anyone posts a tool idea in team chat; DevExAI checks it is safe, plans it with Claude Opus, builds a ready-to-install tool for the team's AI coding assistants, has a second AI review it, and publishes a post crediting the person who had the idea. Slide deck to working pipeline in three days, with 164 tests.</p>
       </div>
       <div class="media-row">
-        <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1680" height="1050" poster="/assets/media/jobfinder/desktop-poster.jpg" src="/assets/media/jobfinder/desktop.mp4" aria-label="JobFinder desktop app tour"></video></div>
+        <div class="desktop"><video data-autoplay muted loop playsinline preload="metadata" width="1280" height="720" poster="/assets/media/devexai/flow-poster.jpg" src="/assets/media/devexai/flow.mp4" aria-label="DevExAI end to end: an idea posted in Slack becomes a reviewed, published and installed tool"></video></div>
       </div>
     </article>
 
@@ -137,7 +137,7 @@
       <div>
         <div class="badges"><span class="chip accent">Android</span><span class="chip">adb</span><span class="chip">mDNS</span></div>
         <h3><a class="stretched" href="https://github.com/raghavsatyadev/TVFreedom">TVFreedom</a></h3>
-        <p>A phone app that finds any Android TV on the network and debloats it over adb, with backups you can restore and an optional Claude-planned debloat through Termux.</p>
+        <p>A phone app that finds any Android TV on the Wi-Fi and turns off its ads, tracking and auto-installed apps over adb, using community-made debloat lists. You check every change first, a safety guard never touches what the TV needs, and Restore undoes it all. No computer or root needed.</p>
       </div>
       <div class="media-row">
         <div class="phone sm"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="1070" poster="/assets/media/tvfreedom/demo-poster.jpg" src="/assets/media/tvfreedom/demo.mp4" aria-label="TVFreedom finding a TV"></video></div>
@@ -167,14 +167,20 @@
       <a class="card reveal" href="https://github.com/raghavsatyadev/BulkYoutubeSearch">
         <div class="card-media phone-media"><img src="/assets/media/bys/found-songs.jpg" width="420" height="936" loading="lazy" alt="BulkYoutubeSearch found songs screen"></div>
         <h3>BulkYoutubeSearch</h3>
-        <p>Searches YouTube for a whole list of songs at once and keeps a "found songs" library with search, artist filters, sorting and a full-screen player.</p>
+        <p>Searches YouTube for a whole list of songs at once and keeps a "found songs" library with search, import, artist filters, sorting and a full-screen player.</p>
         <span class="meta">GitHub · Jetpack Compose</span>
       </a>
       <a class="card reveal" href="https://github.com/raghavsatyadev/Android-Agent-Kit">
         <div class="card-media phone-media"><img src="/assets/media/agentkit/scus-list.jpg" width="420" height="936" loading="lazy" alt="An app built with the Android Agent Kit"></div>
         <h3>Android Agent Kit</h3>
-        <p>Drop-in rules, skills, hooks and local CI for AI coding agents in Android repos, used across four of my apps.</p>
+        <p>Drop-in rules, skills, hooks and local CI for AI coding agents in Android repos. Hooks stop agents from dumping long logs, and per-project skills cover device testing and Material 3 Expressive. Kept in sync with the apps it grew out of.</p>
         <span class="meta">GitHub · Shell</span>
+      </a>
+      <a class="card reveal" href="https://github.com/raghavsatyadev/CameraButton">
+        <div class="card-media watch-media"><img src="/assets/media/camerabutton/remote.jpg" width="450" height="450" loading="lazy" alt="CameraButton shutter screen on a round watch"></div>
+        <h3>CameraButton</h3>
+        <p>A Wear OS app that turns the watch into a Bluetooth camera shutter. It pairs as a keyboard and presses the shutter in the phone's own camera app, so nothing is installed on the phone. Self-timer and a choice of shutter key.</p>
+        <span class="meta">GitHub · Wear OS · Kotlin</span>
       </a>
     </div>
   </section>
@@ -185,13 +191,9 @@
       <p>More on <a href="https://github.com/raghavsatyadev?tab=repositories">GitHub</a>.</p>
     </div>
     <div class="grid">
-      <a class="card reveal" href="https://github.com/raghavsatyadev/local-model-kit">
-        <h3>local-model-kit</h3><p>A free local model on Ollama answers an AI agent's cheap questions, such as whether a build passed or which file to open, so it reads less and spends fewer tokens. One-command install for Claude Code, Gemini CLI, Codex and more, on Windows, macOS and Linux.</p>
-        <span class="meta">Shell · Node.js · Ollama</span>
-      </a>
-      <a class="card reveal" href="https://github.com/raghavsatyadev/plan-keeper">
-        <h3>plan-keeper</h3><p>Claude Code plugin that keeps a short plan per project. The plan survives <code>/clear</code> and compaction, and questions you haven't answered are saved instead of lost.</p>
-        <span class="meta">Claude Code plugin · Bash · PowerShell</span>
+      <a class="card reveal" href="https://github.com/raghavsatyadev/PhoneBackup">
+        <h3>PhoneBackup</h3><p>Backs up an Android phone over adb with a web dashboard: live speed chart, resume after a dropped cable, file checks and one-click retry of failed files. Windows, macOS and Linux.</p>
+        <span class="meta">Go · adb</span>
       </a>
       <a class="card reveal" href="https://github.com/raghavsatyadev/MoreApps">
         <h3>MoreApps</h3><p>Android library on Maven Central for cross-promoting your apps and forcing soft or hard updates.</p>

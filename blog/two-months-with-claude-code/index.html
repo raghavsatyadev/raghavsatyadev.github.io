@@ -161,14 +161,14 @@
           <li>Hooks compress long command output, stop retry loops, and block raw log dumps.</li>
           <li>The <strong>lm-savings</strong> plugin adds <code>/lm-savings</code>, which reports what all of this saved.</li>
         </ul>
-        <p>All of it is now one open-source repo, <strong><a href="https://github.com/raghavsatyadev/local-model-kit">local-model-kit</a></strong>. One command installs Ollama, the model, the tools and the hooks, plus the skills for Claude Code, Gemini CLI, Codex, Copilot CLI and OpenCode, on Windows, macOS or Linux:</p>
+        <p>All of it is now one open-source repo, <strong>local-model-kit</strong>. One command installs Ollama, the model, the tools and the hooks, plus the skills for Claude Code, Gemini CLI, Codex, Copilot CLI and OpenCode, on Windows, macOS or Linux:</p>
         <pre><code># macOS / Linux
 curl -fsSL https://raw.githubusercontent.com/raghavsatyadev/local-model-kit/main/install.sh | bash
 # Windows (PowerShell)
 irm https://raw.githubusercontent.com/raghavsatyadev/local-model-kit/main/install.ps1 | iex</code></pre>
 
         <h3 id="plan-keeper">plan-keeper: memory across sessions</h3>
-        <p><strong><a href="https://github.com/raghavsatyadev/plan-keeper">plan-keeper</a></strong> is a plugin that keeps a short <code>.claude/PLAN.md</code> in each project. It updates the plan after each turn and re-injects it after <code>/clear</code> or compaction, so a new session picks up where the last one stopped. Any question Claude leaves unanswered is saved to <code>DECISIONS.md</code> so it doesn't get lost.</p>
+        <p><strong>plan-keeper</strong> is a plugin that keeps a short <code>.claude/PLAN.md</code> in each project. It updates the plan after each turn and re-injects it after <code>/clear</code> or compaction, so a new session picks up where the last one stopped. Any question Claude leaves unanswered is saved to <code>DECISIONS.md</code> so it doesn't get lost.</p>
 
         <h3 id="agent-kit">Android Agent Kit</h3>
         <p>I pulled the rules, hooks, skills and local CI from one app into a drop-in <strong><a href="https://github.com/raghavsatyadev/Android-Agent-Kit">Android Agent Kit</a></strong>, now rolled into four of my projects. It includes per-project skills for Material 3 Expressive patterns and for testing on devices without leaving them in a messed-up state.</p>

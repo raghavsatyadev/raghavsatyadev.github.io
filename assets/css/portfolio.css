@@ -1,6 +1,8 @@
 /* Portfolio-only layout: phone card media, experience grid, blog teaser, contact. */
 .card-media.phone-media { aspect-ratio: 4 / 3; display: flex; justify-content: center; align-items: flex-start; padding-top: 1.25rem; background: var(--md-secondary-container); }
 .card-media.phone-media img { width: 52%; height: auto; border-radius: 18px 18px 0 0; box-shadow: var(--elev-3); }
+.card-media.watch-media { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--md-secondary-container); }
+.card-media.watch-media img { width: 52%; height: auto; border-radius: 50%; box-shadow: var(--elev-3); }
 .grid + .grid, .spotlight + .grid { margin-top: 1.25rem; }
 
 .exp-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }

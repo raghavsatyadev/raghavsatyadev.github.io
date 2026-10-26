@@ -1,4 +1,4 @@
-/* DevExAI flagship: homepage feature panel and the case-study page. */
+/* Homepage flagship panel (JobFinder) and the DevExAI case-study page. */
 
 /* Feature panel on the homepage */
 .flagship {
@@ -23,6 +23,10 @@
 .flagship .desktop { box-shadow: var(--elev-3); }
 .flagship .btn-filled { background: var(--md-on-primary-container); color: var(--md-primary-container); }
 .flagship .btn-outlined { color: var(--md-on-primary-container); box-shadow: inset 0 0 0 1px currentColor; }
+.flagship figcaption a { color: inherit; }
+.flagship-points { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.flagship-points li { background: color-mix(in srgb, var(--md-surface) 55%, transparent); border-radius: var(--shape-lg); padding: 0.9rem 1rem; font-size: 0.92rem; line-height: 1.5; min-width: 0; }
+.flagship-points b { display: block; margin-bottom: 0.2rem; }
 
 /* Mini stats inside the panel */
 .mini-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin: 1.25rem 0 0; }
