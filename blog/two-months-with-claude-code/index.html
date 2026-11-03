@@ -159,7 +159,7 @@
           <li><strong><code>jgl</code></strong> is local semantic code search, and <strong><code>lm-rank</code></strong> picks which search hits are worth opening.</li>
           <li><strong><code>lm-diffcheck</code></strong> runs each project's rules over a diff before every code review.</li>
           <li>Hooks compress long command output, stop retry loops, and block raw log dumps.</li>
-          <li>The <strong>lm-savings</strong> plugin adds <code>/lm-savings</code>, which reports what all of this saved.</li>
+          <li>The <strong>token-saver</strong> plugin adds <code>/tool-savings</code>, which reports what all of this saved.</li>
         </ul>
         <p>All of it now lives in one open-source repo, <strong><a href="https://github.com/raghavsatyadev/agent-workflow">agent-workflow</a></strong>, with my other skills, hooks and agent config. Its installer sets up Ollama, the model, the tools and the hooks, plus the skills for Claude Code, Gemini CLI, Codex, Copilot CLI and OpenCode, on Windows, macOS or Linux (on Windows, run it from Git Bash):</p>
         <pre><code>git clone https://github.com/raghavsatyadev/agent-workflow.git
