@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GrammarFix: an on-device writing assistant · Raghav Satyadev</title>
+  <meta name="description" content="A Grammarly-style writing assistant built in three days. It checks what you type in any Android app and offers fixes in a floating bubble. Every correction comes from an on-device Qwen3 model through llama.cpp: no server, no account, and your text never leaves the device.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/projects/grammarfix/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="GrammarFix: an on-device writing assistant">
+  <meta property="og:description" content="A Grammarly-style writing assistant built in three days. It checks what you type in any Android app and offers fixes in a floating bubble. Every correction comes from an on-device Qwen3 model through llama.cpp: no server, no account, and your text never leaves the device.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/projects/grammarfix/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/grammarfix/demo-poster.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GrammarFix",
+  "description": "A Grammarly-style writing assistant built in three days. It checks what you type in any Android app and offers fixes in a floating bubble. Every correction comes from an on-device Qwen3 model through llama.cpp: no server, no account, and your text never leaves the device.",
+  "operatingSystem": "Android",
+  "applicationCategory": "UtilitiesApplication",
+  "author": {
+    "@type": "Person",
+    "name": "Raghav Satyadev",
+    "url": "https://raghavsatyadev.github.io/"
+  },
+  "url": "https://raghavsatyadev.github.io/projects/grammarfix/",
+  "codeRepository": "https://github.com/raghavsatyadev/GrammarFix",
+  "image": "https://raghavsatyadev.github.io/assets/media/grammarfix/demo-poster.jpg",
+  "downloadUrl": "https://github.com/raghavsatyadev/GrammarFix/releases/latest",
+  "softwareVersion": "0.0.3"
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/devexai.css">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#jobfinder">JobFinder</a>
+      <a href="/#projects" aria-current="page">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/blog/">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <section class="hero case-hero">
+    <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span><span class="shape shape-c"></span></div>
+    <span class="eyebrow">Compose Multiplatform · llama.cpp · Qwen3</span>
+    <h1>GrammarFix: fixes for your writing, and nothing leaves the phone.</h1>
+    <p class="lede">A Grammarly-style writing assistant built in three days. It checks what you type in any Android app and offers fixes in a floating bubble. Every correction comes from an on-device Qwen3 model through llama.cpp: no server, no account, and your text never leaves the device.</p>
+    <div class="btn-row">
+      <a class="btn btn-filled" href="https://github.com/raghavsatyadev/GrammarFix/releases/latest">Download v0.0.3</a>
+      <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/GrammarFix">Source on GitHub</a>
+      <a class="btn btn-outlined" href="/#projects">All projects</a>
+    </div>
+    <div class="note"><span class="note-icon" aria-hidden="true">ⓘ</span><p>From GitHub Releases: Android APK. The Qwen3 model (about 1.2 GB) downloads once from inside the app. Not on Google Play.</p></div>
+  </section>
+
+  <section class="case-section" id="screens" aria-labelledby="screens-title">
+    <div class="section-head"><div><span class="kicker">The app</span><h2 id="screens-title">Screens</h2></div></div>
+    <div class="gallery shots">
+      <figure><div class="phone"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="998" poster="/assets/media/grammarfix/demo-poster.jpg" src="/assets/media/grammarfix/demo.mp4" aria-label="GrammarFix fixing text in a notes app"></video></div><figcaption>Demo</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/grammarfix/setup.jpg" alt="Guided setup" width="420" height="910" loading="lazy"></div><figcaption>Guided setup</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/grammarfix/model.jpg" alt="The on-device model" width="420" height="910" loading="lazy"></div><figcaption>The on-device model</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/grammarfix/tones.jpg" alt="Rewrite tones" width="420" height="910" loading="lazy"></div><figcaption>Rewrite tones</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/grammarfix/insights.jpg" alt="Private insights" width="420" height="910" loading="lazy"></div><figcaption>Private insights</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="case-section" id="features" aria-labelledby="features-title">
+    <div class="section-head"><div><span class="kicker">Features</span><h2 id="features-title">What it does</h2></div></div>
+    <div class="grid">
+      <div class="card"><h3>Fixes in every app</h3><p>An accessibility service reads the field you are editing and a small bubble shows each fix to accept or dismiss, or Accept all.</p></div>
+      <div class="card"><h3>Rewrite in one tap</h3><p>Polish, rephrase, shorten, make it friendly or formal, expand it, or give your own instruction.</p></div>
+      <div class="card"><h3>Fully on-device</h3><p>Qwen3 GGUF through llama.cpp. Fast mode answers in about 2 to 5 seconds. No network calls on the correction path.</p></div>
+      <div class="card"><h3>Playground and tones</h3><p>Try text inside the app, and edit or write the prompts behind each rewrite style.</p></div>
+      <div class="card"><h3>Insights, kept private</h3><p>Only counts and timestamps are stored, never your text. A test fails if anyone adds a text column.</p></div>
+      <div class="card"><h3>Guided setup</h3><p>Walks through the model download, Display over other apps and the Accessibility service.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="contact-card get-card">
+      <h2>Try GrammarFix</h2>
+      <p>Free and open source. Install it from the latest release, or read and build the code.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-filled" href="https://github.com/raghavsatyadev/GrammarFix/releases/latest">Download v0.0.3</a>
+        <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/GrammarFix">Source on GitHub</a>
+        <a class="btn btn-outlined" href="/#projects" style="color:inherit">Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/">Portfolio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

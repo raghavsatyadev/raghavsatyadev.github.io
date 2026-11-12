@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AndroidWorld: a desktop app for Android devices · Raghav Satyadev</title>
+  <meta name="description" content="A Compose Multiplatform desktop app for working with Android devices and emulators: logcat with filters, app data, quick toggles, screen share and AVD management. Its MCP server lets Claude Code see and drive the selected device.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/projects/androidworld/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="AndroidWorld: a desktop app for Android devices">
+  <meta property="og:description" content="A Compose Multiplatform desktop app for working with Android devices and emulators: logcat with filters, app data, quick toggles, screen share and AVD management. Its MCP server lets Claude Code see and drive the selected device.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/projects/androidworld/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/androidworld/device.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AndroidWorld",
+  "description": "A Compose Multiplatform desktop app for working with Android devices and emulators: logcat with filters, app data, quick toggles, screen share and AVD management. Its MCP server lets Claude Code see and drive the selected device.",
+  "operatingSystem": "Windows",
+  "applicationCategory": "UtilitiesApplication",
+  "author": {
+    "@type": "Person",
+    "name": "Raghav Satyadev",
+    "url": "https://raghavsatyadev.github.io/"
+  },
+  "url": "https://raghavsatyadev.github.io/projects/androidworld/",
+  "codeRepository": "https://github.com/raghavsatyadev/AndroidWorld",
+  "image": "https://raghavsatyadev.github.io/assets/media/androidworld/device.jpg"
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/devexai.css">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#jobfinder">JobFinder</a>
+      <a href="/#projects" aria-current="page">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/blog/">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <section class="hero case-hero">
+    <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span><span class="shape shape-c"></span></div>
+    <span class="eyebrow">Compose Desktop · adb · MCP</span>
+    <h1>AndroidWorld: one desktop app for every Android device.</h1>
+    <p class="lede">A Compose Multiplatform desktop app for working with Android devices and emulators: logcat with filters, app data, quick toggles, screen share and AVD management. Its MCP server lets Claude Code see and drive the selected device.</p>
+    <div class="btn-row">
+      <a class="btn btn-filled" href="https://github.com/raghavsatyadev/AndroidWorld">Source on GitHub</a>
+      <a class="btn btn-outlined" href="/#projects">All projects</a>
+    </div>
+    <div class="note"><span class="note-icon" aria-hidden="true">ⓘ</span><p>No release yet. Build it from source with JDK 21; it needs adb on PATH, and scrcpy for screen share.</p></div>
+  </section>
+
+  <section class="case-section" id="screens" aria-labelledby="screens-title">
+    <div class="section-head"><div><span class="kicker">The app</span><h2 id="screens-title">Screens</h2></div></div>
+    <figure class="wide-shot"><div class="desktop"><img src="/assets/media/androidworld/device.jpg" alt="The device screen with a connected emulator and the app in front." width="1582" height="882" loading="lazy"></div><figcaption>The device screen with a connected emulator and the app in front.</figcaption></figure>
+  </section>
+
+  <section class="case-section" id="features" aria-labelledby="features-title">
+    <div class="section-head"><div><span class="kicker">Features</span><h2 id="features-title">What it does</h2></div></div>
+    <div class="grid">
+      <div class="card"><h3>Devices</h3><p>Device list and facts, current app controls and screenshots.</p></div>
+      <div class="card"><h3>Logcat</h3><p>Level, search and package filters.</p></div>
+      <div class="card"><h3>App data</h3><p>Shared preferences and an SQLite editor, permissions and deep links.</p></div>
+      <div class="card"><h3>Quick toggles</h3><p>Font scale, density, locale, location, proxy and emulator network throttle.</p></div>
+      <div class="card"><h3>Screen share</h3><p>Mirror and record the device with scrcpy.</p></div>
+      <div class="card"><h3>Emulators</h3><p>List, start, stop, create and delete AVDs.</p></div>
+      <div class="card"><h3>MCP server</h3><p>Screenshots, UI tree, tap, type and swipe, apps, prefs, databases and logcat for coding agents, with a one-click Claude Code connection.</p></div>
+      <div class="card"><h3>Credits</h3><p>Builds on AndroidDeveloperToolkit (Device Cockpit) and ports parts of Oh My Android, used with their authors&#x27; permission.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="contact-card get-card">
+      <h2>Try AndroidWorld</h2>
+      <p>Free and open source. Read the code and build it from GitHub.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/AndroidWorld">Source on GitHub</a>
+        <a class="btn btn-outlined" href="/#projects" style="color:inherit">Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/">Portfolio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

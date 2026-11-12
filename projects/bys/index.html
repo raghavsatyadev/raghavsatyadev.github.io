@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BulkYoutubeSearch: find a whole song list on YouTube · Raghav Satyadev</title>
+  <meta name="description" content="Give it a list of song names; it finds each one on YouTube in the background and keeps the matches as a playable library with search, artist filters, sorting and a full-screen player.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/projects/bys/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="BulkYoutubeSearch: find a whole song list on YouTube">
+  <meta property="og:description" content="Give it a list of song names; it finds each one on YouTube in the background and keeps the matches as a playable library with search, artist filters, sorting and a full-screen player.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/projects/bys/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/bys/dashboard.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BulkYoutubeSearch",
+  "description": "Give it a list of song names; it finds each one on YouTube in the background and keeps the matches as a playable library with search, artist filters, sorting and a full-screen player.",
+  "operatingSystem": "Android",
+  "applicationCategory": "UtilitiesApplication",
+  "author": {
+    "@type": "Person",
+    "name": "Raghav Satyadev",
+    "url": "https://raghavsatyadev.github.io/"
+  },
+  "url": "https://raghavsatyadev.github.io/projects/bys/",
+  "codeRepository": "https://github.com/raghavsatyadev/BulkYoutubeSearch",
+  "image": "https://raghavsatyadev.github.io/assets/media/bys/dashboard.jpg",
+  "downloadUrl": "https://github.com/raghavsatyadev/BulkYoutubeSearch/releases/latest",
+  "softwareVersion": "0.0.3"
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/devexai.css">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#jobfinder">JobFinder</a>
+      <a href="/#projects" aria-current="page">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/blog/">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <section class="hero case-hero">
+    <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span><span class="shape shape-c"></span></div>
+    <span class="eyebrow">Jetpack Compose · WorkManager · YouTube Data API</span>
+    <h1>BulkYoutubeSearch: a whole song list, found at once.</h1>
+    <p class="lede">Give it a list of song names; it finds each one on YouTube in the background and keeps the matches as a playable library with search, artist filters, sorting and a full-screen player.</p>
+    <div class="btn-row">
+      <a class="btn btn-filled" href="https://github.com/raghavsatyadev/BulkYoutubeSearch/releases/latest">Download v0.0.3</a>
+      <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/BulkYoutubeSearch">Source on GitHub</a>
+      <a class="btn btn-outlined" href="/#projects">All projects</a>
+    </div>
+    <div class="note"><span class="note-icon" aria-hidden="true">ⓘ</span><p>From GitHub Releases: Android APK. Bring your own YouTube Data API keys. Not on Google Play.</p></div>
+  </section>
+
+  <section class="case-section" id="screens" aria-labelledby="screens-title">
+    <div class="section-head"><div><span class="kicker">The app</span><h2 id="screens-title">Screens</h2></div></div>
+    <div class="gallery shots">
+      <figure><div class="phone"><img src="/assets/media/bys/dashboard.jpg" alt="Home" width="420" height="825" loading="lazy"></div><figcaption>Home</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/bys/found-songs.jpg" alt="Found songs" width="420" height="825" loading="lazy"></div><figcaption>Found songs</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/bys/artist-filter.jpg" alt="Filter by artist" width="420" height="836" loading="lazy"></div><figcaption>Filter by artist</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/bys/player.jpg" alt="The player" width="420" height="836" loading="lazy"></div><figcaption>The player</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="case-section" id="features" aria-labelledby="features-title">
+    <div class="section-head"><div><span class="kicker">Features</span><h2 id="features-title">What it does</h2></div></div>
+    <div class="grid">
+      <div class="card"><h3>Bulk search</h3><p>Pick a JSON list of song names; a WorkManager job searches YouTube for each, rotating across your API keys when one runs out of quota.</p></div>
+      <div class="card"><h3>Found songs</h3><p>Search by song or artist, filter by one or more artists, and sort by name, artist or release date.</p></div>
+      <div class="card"><h3>Release dates</h3><p>Taken from YouTube, and filled in for older finds with one call per 50 songs.</p></div>
+      <div class="card"><h3>Player</h3><p>Plays in the app, shrinks to picture-in-picture, and goes full-screen landscape.</p></div>
+      <div class="card"><h3>API keys</h3><p>Add, see and remove YouTube Data API keys in the app.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="contact-card get-card">
+      <h2>Try BulkYoutubeSearch</h2>
+      <p>Free and open source. Install it from the latest release, or read and build the code.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-filled" href="https://github.com/raghavsatyadev/BulkYoutubeSearch/releases/latest">Download v0.0.3</a>
+        <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/BulkYoutubeSearch">Source on GitHub</a>
+        <a class="btn btn-outlined" href="/#projects" style="color:inherit">Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/">Portfolio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

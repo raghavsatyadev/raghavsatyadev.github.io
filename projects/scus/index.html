@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Cricket Umpire Scorer (SCUS) · Raghav Satyadev</title>
+  <meta name="description" content="An open-source, offline scorer for the umpire or scorer at a local cricket match. Tap once per ball, run or wicket; the app keeps the score, overs, run rates and the chase, and shows the result when the match ends. Rebuilt in Compose Multiplatform with Material 3 Expressive motion.">
+  <meta name="author" content="Raghav Satyadev">
+  <link rel="canonical" href="https://raghavsatyadev.github.io/projects/scus/">
+  <link rel="alternate" type="application/atom+xml" title="Raghav Satyadev's blog" href="/blog/feed.xml">
+  <meta name="theme-color" content="#65558f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Raghav Satyadev">
+  <meta property="og:title" content="Simple Cricket Umpire Scorer (SCUS)">
+  <meta property="og:description" content="An open-source, offline scorer for the umpire or scorer at a local cricket match. Tap once per ball, run or wicket; the app keeps the score, overs, run rates and the chase, and shows the result when the match ends. Rebuilt in Compose Multiplatform with Material 3 Expressive motion.">
+  <meta property="og:url" content="https://raghavsatyadev.github.io/projects/scus/">
+  <meta property="og:image" content="https://raghavsatyadev.github.io/assets/media/scus/demo-poster.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Simple Cricket Umpire Scorer",
+  "description": "An open-source, offline scorer for the umpire or scorer at a local cricket match. Tap once per ball, run or wicket; the app keeps the score, overs, run rates and the chase, and shows the result when the match ends. Rebuilt in Compose Multiplatform with Material 3 Expressive motion.",
+  "operatingSystem": "Android",
+  "applicationCategory": "UtilitiesApplication",
+  "author": {
+    "@type": "Person",
+    "name": "Raghav Satyadev",
+    "url": "https://raghavsatyadev.github.io/"
+  },
+  "url": "https://raghavsatyadev.github.io/projects/scus/",
+  "codeRepository": "https://github.com/raghavsatyadev/SimpleCricketUmpireScorer",
+  "image": "https://raghavsatyadev.github.io/assets/media/scus/demo-poster.jpg",
+  "downloadUrl": "https://github.com/raghavsatyadev/SimpleCricketUmpireScorer/releases/latest",
+  "softwareVersion": "1.1.0"
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,400..1000&family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/devexai.css">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-bar">
+  <div class="page">
+    <a class="brand" href="/"><span class="brand-mark">RS</span><span class="brand-name">Raghav Satyadev</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#jobfinder">JobFinder</a>
+      <a href="/#projects" aria-current="page">Projects</a>
+      <a href="/#experience">Experience</a>
+      <a href="/blog/">Blog</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <section class="hero case-hero">
+    <div class="hero-shapes" aria-hidden="true"><span class="shape shape-a"></span><span class="shape shape-b"></span><span class="shape shape-c"></span></div>
+    <span class="eyebrow">Compose Multiplatform · Room · Material 3 Expressive</span>
+    <h1>Simple Cricket Umpire Scorer: tap once per ball.</h1>
+    <p class="lede">An open-source, offline scorer for the umpire or scorer at a local cricket match. Tap once per ball, run or wicket; the app keeps the score, overs, run rates and the chase, and shows the result when the match ends. Rebuilt in Compose Multiplatform with Material 3 Expressive motion.</p>
+    <div class="btn-row">
+      <a class="btn btn-filled" href="https://github.com/raghavsatyadev/SimpleCricketUmpireScorer/releases/latest">Download v1.1.0</a>
+      <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/SimpleCricketUmpireScorer">Source on GitHub</a>
+      <a class="btn btn-outlined" href="/#projects">All projects</a>
+    </div>
+    <div class="note"><span class="note-icon" aria-hidden="true">ⓘ</span><p>From GitHub Releases: Android APK. Desktop and iOS builds come from the same code. Not on Google Play.</p></div>
+  </section>
+
+  <section class="case-section" id="screens" aria-labelledby="screens-title">
+    <div class="section-head"><div><span class="kicker">The app</span><h2 id="screens-title">Screens</h2></div></div>
+    <div class="gallery shots">
+      <figure><div class="phone"><video data-autoplay muted loop playsinline preload="metadata" width="480" height="1040" poster="/assets/media/scus/demo-poster.jpg" src="/assets/media/scus/demo.mp4" aria-label="Creating a match and scoring the first balls in SCUS"></video></div><figcaption>Demo</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/scus/dashboard.jpg" alt="Matches with their result" width="420" height="936" loading="lazy"></div><figcaption>Matches with their result</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/scus/create-match.jpg" alt="Create a match" width="420" height="936" loading="lazy"></div><figcaption>Create a match</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/scus/scoring.jpg" alt="Scoring" width="420" height="910" loading="lazy"></div><figcaption>Scoring</figcaption></figure>
+      <figure><div class="phone"><img src="/assets/media/scus/match-complete.jpg" alt="The result" width="420" height="936" loading="lazy"></div><figcaption>The result</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="case-section" id="features" aria-labelledby="features-title">
+    <div class="section-head"><div><span class="kicker">Features</span><h2 id="features-title">What it does</h2></div></div>
+    <div class="grid">
+      <div class="card"><h3>Match list</h3><p>Won, lost, draw and in-progress pills. Copy a match to start a rematch; deleting asks first.</p></div>
+      <div class="card"><h3>Create a match</h3><p>Date and time, team names, overs per inning, toss and batting order in connected button groups.</p></div>
+      <div class="card"><h3>Scoring</h3><p>Large run, ball and wicket buttons, an innings bar that turns wavy and red when the chase falls behind, and a celebration for wickets and every 50 runs.</p></div>
+      <div class="card"><h3>Result</h3><p>The winner&#x27;s score with a slowly turning Material shape behind it.</p></div>
+      <div class="card"><h3>Motion</h3><p>Cards grow into their match screen, list items cascade in, and every animation stops when the device has animations off.</p></div>
+      <div class="card"><h3>Offline</h3><p>Everything is stored on the device with Room. No account, no network.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="contact-card get-card">
+      <h2>Try Simple Cricket Umpire Scorer</h2>
+      <p>Free and open source. Install it from the latest release, or read and build the code.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-filled" href="https://github.com/raghavsatyadev/SimpleCricketUmpireScorer/releases/latest">Download v1.1.0</a>
+        <a class="btn btn-tonal" href="https://github.com/raghavsatyadev/SimpleCricketUmpireScorer">Source on GitHub</a>
+        <a class="btn btn-outlined" href="/#projects" style="color:inherit">Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span>© 2026 Raghav Satyadev</span>
+    <nav aria-label="Footer">
+      <a href="/">Portfolio</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/feed.xml">RSS / Atom</a>
+      <a href="https://github.com/raghavsatyadev" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/rjsatyadev/" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

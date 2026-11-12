@@ -1,0 +1,10 @@
+/* App project pages (/projects/<slug>/): phone gallery, wide shots, closing card. */
+.gallery.shots { grid-auto-columns: min(70%, 240px); }
+.gallery.shots .phone { width: 100%; }
+.gallery.shots .phone img { border-radius: 0; box-shadow: none; }
+.gallery .watch { border-radius: 50%; box-shadow: var(--elev-3); margin-top: 2rem; }
+.wide-shot { margin-top: 1.5rem; max-width: 960px; }
+.get-card {
+  background: var(--md-inverse-surface); color: var(--md-inverse-on-surface); text-align: center;
+  padding: clamp(2rem, 6vw, 3.5rem) 1.5rem; border-radius: var(--shape-xxl);
+}
