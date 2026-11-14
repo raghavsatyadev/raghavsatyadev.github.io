@@ -45,3 +45,42 @@
   }, { threshold: 0.25 });
   document.querySelectorAll("video[data-autoplay]").forEach((v) => player.observe(v));
 })();
+
+// Download buttons marked data-release="owner/repo" follow the newest GitHub release: the label
+// shows its version and the link goes straight to the asset ending in data-asset (.apk, .msi).
+// Without the API (offline, rate limit) they keep pointing at the releases/latest page.
+(() => {
+  const buttons = document.querySelectorAll("a[data-release]");
+  if (!buttons.length) return;
+  const latest = (repo) => {
+    const key = "release:" + repo;
+    try {
+      const hit = JSON.parse(sessionStorage.getItem(key) || "null");
+      if (hit && Date.now() - hit.at < 3600e3) return Promise.resolve(hit.data);
+    } catch (e) {}
+    return fetch("https://api.github.com/repos/" + repo + "/releases/latest", {
+      headers: { Accept: "application/vnd.github+json" },
+    })
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((json) => {
+        const data = {
+          tag: json.tag_name,
+          assets: (json.assets || []).map((a) => ({ name: a.name, url: a.browser_download_url })),
+        };
+        try { sessionStorage.setItem(key, JSON.stringify({ at: Date.now(), data })); } catch (e) {}
+        return data;
+      });
+  };
+  const requests = {};
+  buttons.forEach((a) => {
+    const repo = a.dataset.release;
+    requests[repo] = requests[repo] || latest(repo);
+    requests[repo].then((data) => {
+      if (!data || !data.tag) return;
+      a.textContent = "Download " + data.tag;
+      const suffix = (a.dataset.asset || "").toLowerCase();
+      const asset = suffix && data.assets.find((x) => x.name.toLowerCase().endsWith(suffix));
+      if (asset) a.href = asset.url;
+    }).catch(() => {});
+  });
+})();
